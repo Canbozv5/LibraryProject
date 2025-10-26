@@ -10,6 +10,9 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
     name: "",
     publicationYear: "",
     stock: 0,
+    publisherId: "",
+    authorId: "",
+    categoryId: "",
   });
 
   const [publishers, setPublishers] = useState([]);
