@@ -33,7 +33,7 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
         setCategories(categ.data);
       })
       .catch((errors) => {
-        console.errors("Yükleme hatası", errors);
+        console.error("Yükleme hatası", errors);
       });
   };
 
@@ -73,11 +73,11 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
 
     const load = {
       name: data.name,
-      publicationYear: data.publicationYear,
-      stock: data.stock,
-      publisherId: data.publisherId,
-      categoryId: data.categoryId,
-      authorId: data.authorId,
+      publicationYear: parseInt(data.publicationYear),
+      stock: parseInt(data.stock),
+      author: data.authorId ? { id: parseInt(data.authorId) } : null,
+      publisher: data.publisherId ? { id: parseInt(data.publisherId) } : null,
+      categories: data.categoryId ? [{ id: parseInt(data.categoryId) }] : [],
     };
 
     try {
@@ -137,6 +137,25 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
+            Yazar:
+          </label>
+          <select
+            name="authorId"
+            value={data.authorId}
+            onChange={handleChange}
+            className="w-full border rounded-md p-2"
+          >
+            <option value="">Seçiniz</option>
+            {authors.map((aut) => (
+              <option key={aut.id} value={aut.id}>
+                {aut.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
             Yayımcı:
           </label>
           <select
@@ -145,6 +164,7 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
             onChange={handleChange}
             className="w-full border rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"
           >
+            <option value="">Seçiniz</option>
             {publishers.map((pub) => (
               <option key={pub.id} value={pub.id}>
                 {pub.name}
@@ -158,24 +178,6 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Yazar:
-          </label>
-          <select
-            name="authorId"
-            value={data.authorId}
-            onChange={handleChange}
-            className="w-full border rounded-md p-2"
-          >
-            {authors.map((aut) => (
-              <option key={aut.id} value={aut.id}>
-                {aut.name}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
             Kategori:
           </label>
           <select
@@ -184,6 +186,7 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
             onChange={handleChange}
             className="w-full border rounded-md p-2"
           >
+            <option value="">Seçiniz</option>
             {categories.map((cat) => (
               <option key={cat.id} value={cat.id}>
                 {cat.name}

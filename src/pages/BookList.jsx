@@ -33,7 +33,6 @@ export default function BookList() {
     if (!confirm("Silmek istediğine emin misin?")) return;
     try {
       await deleteBook(id);
-
       setBooks((prev) => prev.filter((p) => p.id !== id));
       toast.success("Kitap başarıyla silindi!");
     } catch (error) {
@@ -103,7 +102,11 @@ export default function BookList() {
               <td className="border p-2">{p.stock}</td>
               <td className="border p-2">{p.author?.name || "N/A"}</td>
               <td className="border p-2">{p.publisher?.name || "N/A"}</td>
-              <td className="border p-2">{p.category?.name || "N/A"}</td>
+              <td className="border p-2">
+                {p.categories && p.categories.length > 0
+                  ? p.categories[0].name
+                  : "N/A"}
+              </td>
               <td className="border p-2 space-x-2">
                 <button
                   onClick={() => handleEdit(p)}
