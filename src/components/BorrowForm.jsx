@@ -115,12 +115,14 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
   // Layout for form
   return (
     <div>
-      <h3>{initialData ? "Edit Borrowing" : "Add New Borrowing"}</h3>
+      <h3 className="text-yellow-400 text-lg font-semibold">
+        {initialData ? "Edit Borrowing" : "Add New Borrowing"}
+      </h3>
 
       <form onSubmit={handleSubmit}>
         {/* Borrower Name */}
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+        <div className="flex justify-evenly">
+          <label className="text-yellow-400 text-lg mb-1 ml-1">
             Borrower Name:
           </label>
           <input
@@ -128,17 +130,15 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
             name="borrowerName"
             value={data.borrowerName}
             onChange={handleChange}
-            className="w-full border rounded-md p-2"
+            className="w-50 border rounded-md  text-black"
           />
           {errors.borrowerName && (
             <p className="text-red-500 text-xs mt-1">{errors.borrowerName}</p>
           )}
-        </div>
 
-        {/* Borrower Mail */}
+          {/* Borrower Mail */}
 
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="text-yellow-400 text-lg mb-1 ml-1">
             Borrower Mail:
           </label>
           <input
@@ -146,17 +146,15 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
             name="borrowerMail"
             value={data.borrowerMail}
             onChange={handleChange}
-            className="w-full border rounded-md p-2"
+            className="w-50  border rounded-md  text-black"
           />
           {errors.borrowerMail && (
             <p className="text-red-500 text-xs mt-1">{errors.borrowerMail}</p>
           )}
-        </div>
 
-        {/* Borrowing Date */}
+          {/* Borrowing Date */}
 
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="text-yellow-400 text-lg mb-1 ml-1">
             Borrowing Date:
           </label>
           <input
@@ -164,17 +162,15 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
             name="borrowingDate"
             value={data.borrowingDate}
             onChange={handleChange}
-            className="w-full border rounded-md p-2"
+            className="w-50 border rounded-md  text-black"
           />
           {errors.borrowingDate && (
             <p className="text-red-500 text-xs mt-1">{errors.borrowingDate}</p>
           )}
-        </div>
 
-        {/* Return Date */}
+          {/* Return Date */}
 
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-yellow-400 text-lg mb-1 ml-1">
             Return Date:
           </label>
           <input
@@ -182,16 +178,14 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
             name="returnDate"
             value={data.returnDate}
             onChange={handleChange}
-            className="w-full border rounded-md p-2"
+            className="w-50 border rounded-md  text-black"
           />
         </div>
 
         {/* book select option */}
 
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Book:
-          </label>
+          <label className="block text-yellow-400 text-lg mb-1">Book:</label>
           <select
             name="bookId"
             value={data.bookId}
@@ -213,7 +207,7 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-400"
+            className="text-yellow-400 text-xl font-bold hover:text-green-500"
           >
             {isSubmitting ? "Saving..." : initialData ? "Update" : "Create"}
           </button>
@@ -222,7 +216,7 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
             type="button"
             onClick={onClose}
             disabled={isSubmitting}
-            className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 disabled:bg-gray-400"
+            className="text-yellow-400 text-xl font-bold hover:text-red-500 ml-4"
           >
             Cancel
           </button>

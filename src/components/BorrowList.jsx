@@ -70,13 +70,13 @@ export default function BorrowList() {
 
       <button
         onClick={handleNew}
-        className="mb-4 p-2 bg-blue-500 text-white rounded"
+        className="mb-4 p-2 bg-yellow-600 text-white text-lg font-semibold rounded hover:bg-yellow-900 hover:shadow-md hover:shadow-yellow-500"
       >
         Add New Borrowing
       </button>
 
       {showForm && (
-        <div className="mb-8 p-4 border rounded shadow-md">
+        <div className="mb-8 p-4 border rounded shadow-lg shadow-yellow-400 bg-gradient-to-r from-black to-transparent">
           <BorrowForm
             initialData={selectedBorrow}
             onSuccess={handleFormSuccess}
@@ -89,17 +89,17 @@ export default function BorrowList() {
         {/* List head  */}
 
         <thead>
-          <tr className="bg-gray-200">
-            <th className="border p-2 text-left">ID</th>
-            <th className="border p-2 text-left">Borrower Name</th>
-            <th className="border p-2 text-left">Borrower Mail</th>
-            <th className="border p-2 text-left">Borrowing Date</th>
-            <th className="border p-2 text-left">Return Date</th>
-            <th className="border p-2 text-left">Book</th>
-            <th className="border p-2 text-left">Author</th>
-            <th className="border p-2 text-left">Publisher</th>
-            <th className="border p-2 text-left">Category</th>
-            <th className="border p-2 text-left">Actions</th>
+          <tr className="bg-gray-200 text-center">
+            <th className="border p-2 text-yellow-900">ID</th>
+            <th className="border p-2 text-yellow-900">Borrower Name</th>
+            <th className="border p-2 text-yellow-900">Borrower Mail</th>
+            <th className="border p-2 text-yellow-900">Borrowing Date</th>
+            <th className="border p-2 text-yellow-900">Return Date</th>
+            <th className="border p-2 text-yellow-900">Book</th>
+            <th className="border p-2 text-yellow-900">Author</th>
+            <th className="border p-2 text-yellow-900">Publisher</th>
+            <th className="border p-2 text-yellow-900">Category</th>
+            <th className="border p-2 text-yellow-900">Actions</th>
           </tr>
         </thead>
 
@@ -107,18 +107,32 @@ export default function BorrowList() {
 
         <tbody>
           {borrows.map((borrow) => (
-            <tr key={borrow.id} className="hover:bg-gray-50">
-              <td className="border p-2">{borrow.id}</td>
-              <td className="border p-2">{borrow.borrowerName}</td>
-              <td className="border p-2">{borrow.borrowerMail}</td>
-              <td className="border p-2">{borrow.borrowingDate}</td>
-              <td className="border p-2">
+            <tr key={borrow.id} className="text-center">
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {borrow.id}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {borrow.borrowerName}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {borrow.borrowerMail}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {borrow.borrowingDate}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
                 {borrow.returnDate || "Not returned yet."}
               </td>
-              <td className="border p-2">{borrow.book?.name}</td>
-              <td className="border p-2">{borrow.book?.author?.name}</td>
-              <td className="border p-2">{borrow.book?.publisher?.name}</td>
-              <td className="border p-2">
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {borrow.book?.name}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {borrow.book?.author?.name}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {borrow.book?.publisher?.name}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
                 {borrow.book?.categories && borrow.book.categories.length > 0
                   ? borrow.book.categories[0].name
                   : "n/a"}
@@ -126,16 +140,16 @@ export default function BorrowList() {
 
               {/* EDIT or DELETE buttons */}
 
-              <td className="border p-2 space-x-2">
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent space-x-2">
                 <button
                   onClick={() => handleEdit(borrow)}
-                  className="text-blue-600 hover:underline"
+                  className="text-blue-600 font-semibold hover:underline"
                 >
                   EDIT
                 </button>
                 <button
                   onClick={() => handleDelete(borrow.id)}
-                  className="text-red-600 hover:underline"
+                  className="text-red-600 font-semibold hover:underline"
                 >
                   DELETE
                 </button>

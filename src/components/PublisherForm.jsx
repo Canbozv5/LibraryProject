@@ -68,13 +68,16 @@ export default function PublisherForm({ initialData, onSuccess, onClose }) {
   // Layout for form
   return (
     <div>
-      <h3>{initialData ? "Edit Publisher" : "Add New Publisher"}</h3>
+      <h3 className="text-yellow-400 text-lg font-semibold">
+        {initialData ? "Edit Publisher" : "Add New Publisher"}
+      </h3>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex justify-evenly">
         {/* Category Name */}
-        <label>
+        <label className="text-yellow-400 text-lg">
           Name:
           <input
+            className="rounded-md ml-2 text-black"
             type="text"
             name="name"
             value={data.name}
@@ -83,9 +86,10 @@ export default function PublisherForm({ initialData, onSuccess, onClose }) {
           {errors.name && <p className="error">{errors.name}</p>}
         </label>
 
-        <label>
+        <label className="text-yellow-400 text-lg ">
           Address:
           <input
+            className="rounded-md ml-2 text-black "
             type="text"
             name="address"
             value={data.address}
@@ -93,9 +97,10 @@ export default function PublisherForm({ initialData, onSuccess, onClose }) {
           />
         </label>
 
-        <label>
+        <label className="text-yellow-400 text-lg">
           Establishment Year:
           <input
+            className="rounded-md ml-2 text-black"
             type="text"
             name="establishmentYear"
             value={data.establishmentYear}
@@ -105,11 +110,20 @@ export default function PublisherForm({ initialData, onSuccess, onClose }) {
 
         {/* Save or Cancel buttons */}
 
-        <button type="submit" disabled={isSubmitting}>
+        <button
+          className="text-yellow-400 font-bold hover:text-green-500"
+          type="submit"
+          disabled={isSubmitting}
+        >
           {isSubmitting ? "Saving..." : initialData ? "Update" : "Create"}
         </button>
 
-        <button type="button" onClick={onClose} disabled={isSubmitting}>
+        <button
+          className="text-yellow-400 font-bold hover:text-red-500"
+          type="button"
+          onClick={onClose}
+          disabled={isSubmitting}
+        >
           Cancel
         </button>
       </form>

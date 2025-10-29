@@ -65,18 +65,18 @@ export default function BookList() {
 
   // Layout for List
   return (
-    <div className="max-w-[1200px] mx-auto p-6">
+    <div className="max-w-[1200px] mx-auto p-6 ">
       {/* New book button */}
 
       <button
         onClick={handleNew}
-        className="mb-4 p-2 bg-blue-500 text-white rounded"
+        className="mb-4 p-2 bg-yellow-600 text-white text-lg font-semibold rounded hover:bg-yellow-900 hover:shadow-md hover:shadow-yellow-500"
       >
         Add New Book
       </button>
 
       {showForm && (
-        <div className="mb-8 p-4 border rounded shadow-md">
+        <div className="mb-8 p-4 border rounded shadow-lg shadow-yellow-400 bg-gradient-to-r from-black to-transparent">
           <BookForm
             initialData={selectedBook}
             onSuccess={handleFormSuccess}
@@ -89,15 +89,15 @@ export default function BookList() {
         {/* List head  */}
 
         <thead>
-          <tr className="bg-gray-200">
-            <th className="border p-2 text-left">ID</th>
-            <th className="border p-2 text-left">Book Name</th>
-            <th className="border p-2 text-left">Publication Year</th>
-            <th className="border p-2 text-left">Stok</th>
-            <th className="border p-2 text-left">Author</th>
-            <th className="border p-2 text-left">Publisher</th>
-            <th className="border p-2 text-left">Category</th>
-            <th className="border p-2 text-left">Actions</th>
+          <tr className="bg-gray-200 text-center">
+            <th className="border p-2 text-yellow-900">ID</th>
+            <th className="border p-2 text-yellow-900">Book Name</th>
+            <th className="border p-2 text-yellow-900">Publication Year</th>
+            <th className="border p-2 text-yellow-900">Stok</th>
+            <th className="border p-2 text-yellow-900">Author</th>
+            <th className="border p-2 text-yellow-900">Publisher</th>
+            <th className="border p-2 text-yellow-900">Category</th>
+            <th className="border p-2 text-yellow-900">Actions</th>
           </tr>
         </thead>
 
@@ -105,14 +105,26 @@ export default function BookList() {
 
         <tbody>
           {books.map((p) => (
-            <tr key={p.id} className="hover:bg-gray-50">
-              <td className="border p-2">{p.id}</td>
-              <td className="border p-2">{p.name}</td>
-              <td className="border p-2">{p.publicationYear}</td>
-              <td className="border p-2">{p.stock}</td>
-              <td className="border p-2">{p.author?.name}</td>
-              <td className="border p-2">{p.publisher?.name}</td>
-              <td className="border p-2">
+            <tr key={p.id} className="text-center">
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {p.id}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {p.name}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {p.publicationYear}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {p.stock}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {p.author?.name}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {p.publisher?.name}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
                 {p.categories && p.categories.length > 0
                   ? p.categories[0].name
                   : "n/a"}
@@ -120,16 +132,16 @@ export default function BookList() {
 
               {/* EDIT or DELETE buttons */}
 
-              <td className="border p-2 space-x-2">
+              <td className="border p-2 space-x-2 bg-gradient-to-r from-black to-transparent">
                 <button
                   onClick={() => handleEdit(p)}
-                  className="text-blue-600 hover:underline"
+                  className="text-blue-600 font-semibold hover:underline"
                 >
                   EDIT
                 </button>
                 <button
                   onClick={() => handleDelete(p.id)}
-                  className="text-red-600 hover:underline"
+                  className="text-red-600 font-semibold hover:underline"
                 >
                   DELETE
                 </button>

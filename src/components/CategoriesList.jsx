@@ -70,13 +70,13 @@ export default function CategoriesList() {
 
       <button
         onClick={handleNew}
-        className="mb-4 p-2 bg-blue-500 text-white rounded"
+        className="mb-4 p-2 bg-yellow-600 text-white text-lg font-semibold rounded hover:bg-yellow-900 hover:shadow-md hover:shadow-yellow-500"
       >
         Add New Category
       </button>
 
       {showForm && (
-        <div className="mb-8 p-4 border rounded shadow-md">
+        <div className="mb-8 p-4 border rounded shadow-lg shadow-yellow-400 bg-gradient-to-r from-black to-transparent">
           <CategoriesForm
             initialData={selectedCategory}
             onSuccess={handleFormSuccess}
@@ -89,11 +89,11 @@ export default function CategoriesList() {
         {/* List head  */}
 
         <thead>
-          <tr className="bg-gray-200">
-            <th className="border p-2 text-left">ID</th>
-            <th className="border p-2 text-left">Category Name</th>
-            <th className="border p-2 text-left">Description</th>
-            <th className="border p-2 text-left">Actions</th>
+          <tr className="bg-gray-200 text-center">
+            <th className="border p-2 text-yellow-900">ID</th>
+            <th className="border p-2 text-yellow-900">Category Name</th>
+            <th className="border p-2 text-yellow-900">Description</th>
+            <th className="border p-2 text-yellow-900">Actions</th>
           </tr>
         </thead>
 
@@ -101,23 +101,29 @@ export default function CategoriesList() {
 
         <tbody>
           {categories.map((p) => (
-            <tr key={p.id} className="hover:bg-gray-50">
-              <td className="border p-2">{p.id}</td>
-              <td className="border p-2">{p.name}</td>
-              <td className="border p-2">{p.description}</td>
+            <tr key={p.id} className="text-center">
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {p.id}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {p.name}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {p.description}
+              </td>
 
               {/* EDIT or DELETE buttons */}
 
-              <td className="border p-2 space-x-2">
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent space-x-2">
                 <button
                   onClick={() => handleEdit(p)}
-                  className="text-blue-600 hover:underline"
+                  className="text-blue-600 font-semibold hover:underline"
                 >
                   EDIT
                 </button>
                 <button
                   onClick={() => handleDelete(p.id)}
-                  className="text-red-600 hover:underline"
+                  className="text-red-600 font-semibold hover:underline"
                 >
                   DELETE
                 </button>

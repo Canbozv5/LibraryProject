@@ -65,18 +65,18 @@ export default function AuthorList() {
 
   // Layout for the list
   return (
-    <div className="max-w-[1200px] mx-auto p-6">
+    <div className="max-w-[1200px] mx-auto p-6 mt-14">
       {/* New author button */}
 
       <button
         onClick={handleNew}
-        className="mb-4 p-2 bg-blue-500 text-white rounded"
+        className="mb-4 p-2 bg-yellow-600 text-white text-lg font-semibold rounded hover:bg-yellow-900 hover:shadow-md hover:shadow-yellow-500"
       >
         Add New Author
       </button>
 
       {showForm && (
-        <div className="mb-8 p-4 border rounded shadow-md">
+        <div className="mb-8 p-4 border rounded shadow-lg shadow-yellow-400 bg-gradient-to-r from-black to-transparent">
           <AuthorForm
             initialData={selectedAuthor}
             onSuccess={handleFormSuccess}
@@ -85,16 +85,16 @@ export default function AuthorList() {
         </div>
       )}
 
-      <table className="min-w-full border-collapse">
+      <table className="min-w-full border-collapse ">
         {/* List head  */}
 
         <thead>
-          <tr className="bg-gray-200">
-            <th className="border p-2 text-left">ID</th>
-            <th className="border p-2 text-left">Name</th>
-            <th className="border p-2 text-left">Birth Date</th>
-            <th className="border p-2 text-left">Country</th>
-            <th className="border p-2 text-left">Actions</th>
+          <tr className="bg-gray-200 text-center">
+            <th className="border p-2 text-yellow-900">ID</th>
+            <th className="border p-2 text-yellow-900">Name</th>
+            <th className="border p-2 text-yellow-900">Birth Date</th>
+            <th className="border p-2 text-yellow-900">Country</th>
+            <th className="border p-2 text-yellow-900">Actions</th>
           </tr>
         </thead>
 
@@ -102,24 +102,32 @@ export default function AuthorList() {
 
         <tbody>
           {authors.map((p) => (
-            <tr key={p.id} className="hover:bg-gray-50">
-              <td className="border p-2">{p.id}</td>
-              <td className="border p-2">{p.name}</td>
-              <td className="border p-2">{p.birthDate}</td>
-              <td className="border p-2">{p.country}</td>
+            <tr key={p.id} className="text-center">
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {p.id}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {p.name}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {p.birthDate}
+              </td>
+              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                {p.country}
+              </td>
 
               {/* EDIT or DELETE buttons */}
 
-              <td className="border p-2 space-x-2">
+              <td className="border p-2 space-x-2 bg-gradient-to-r from-black to-transparent">
                 <button
                   onClick={() => handleEdit(p)}
-                  className="text-blue-600 hover:underline"
+                  className="text-blue-600 font-semibold hover:underline"
                 >
                   EDIT
                 </button>
                 <button
                   onClick={() => handleDelete(p.id)}
-                  className="text-red-600 hover:underline"
+                  className="text-red-600 font-semibold hover:underline"
                 >
                   DELETE
                 </button>

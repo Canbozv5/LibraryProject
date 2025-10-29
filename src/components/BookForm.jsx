@@ -113,45 +113,49 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
   // Layout for form
   return (
     <div>
-      <h3>{initialData ? "Edit Book" : "Add New Book"}</h3>
+      <h3 className="text-yellow-400 text-lg font-semibold">
+        {initialData ? "Edit Book" : "Add New Book"}
+      </h3>
 
       <form onSubmit={handleSubmit}>
         {/* Book Name */}
-        <label>
-          Book Name:
-          <input
-            type="text"
-            name="name"
-            value={data.name}
-            onChange={handleChange}
-          />
-          {errors.name && <p className="error">{errors.name}</p>}
-        </label>
-
-        <label>
-          Publication Year:
-          <input
-            type="text"
-            name="publicationYear"
-            value={data.publicationYear}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          Stock:
-          <input
-            type="text"
-            name="stock"
-            value={data.stock}
-            onChange={handleChange}
-          />
-        </label>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Author:
+        <div className="flex justify-evenly">
+          <label className="text-yellow-400 text-lg mb-1">
+            Book Name :
+            <input
+              className="w-50 ml-2 border rounded-md  text-black"
+              type="text"
+              name="name"
+              value={data.name}
+              onChange={handleChange}
+            />
+            {errors.name && <p className="error">{errors.name}</p>}
           </label>
+
+          <label className="text-yellow-400 text-lg mb-1">
+            Publication Year :
+            <input
+              className="w-50 ml-2 border rounded-md  text-black"
+              type="text"
+              name="publicationYear"
+              value={data.publicationYear}
+              onChange={handleChange}
+            />
+          </label>
+
+          <label className="text-yellow-400 text-lg mb-1">
+            Stock :
+            <input
+              className="w-50 ml-2 border rounded-md  text-black"
+              type="text"
+              name="stock"
+              value={data.stock}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+        <div className="mb-1">
+          <label className="block text-yellow-400 text-lg mb-1">Author :</label>
           <select
             name="authorId"
             value={data.authorId}
@@ -167,15 +171,15 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
           </select>
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Publisher:
+        <div className="mb-1">
+          <label className="block text-yellow-400 text-lg mb-1">
+            Publisher :
           </label>
           <select
             name="publisherId"
             value={data.publisherId}
             onChange={handleChange}
-            className="w-full border rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full border rounded-md p-2"
           >
             <option value="">Please Select</option>
             {publishers.map((pub) => (
@@ -189,9 +193,9 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
           )}
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Category:
+        <div className="mb-1">
+          <label className="block text-yellow-400 text-lg mb-1">
+            Category :
           </label>
           <select
             name="categoryId"
@@ -210,11 +214,20 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
 
         {/* Save or Cancel buttons */}
 
-        <button type="submit" disabled={isSubmitting}>
+        <button
+          className="text-yellow-400 text-xl font-bold hover:text-green-500"
+          type="submit"
+          disabled={isSubmitting}
+        >
           {isSubmitting ? "Saving..." : initialData ? "Update" : "Create"}
         </button>
 
-        <button type="button" onClick={onClose} disabled={isSubmitting}>
+        <button
+          className="text-yellow-400 text-xl font-bold hover:text-red-500 ml-4"
+          type="button"
+          onClick={onClose}
+          disabled={isSubmitting}
+        >
           Cancel
         </button>
       </form>

@@ -66,13 +66,16 @@ export default function AuthorForm({ initialData, onSuccess, onClose }) {
   // Layout for form
   return (
     <div>
-      <h3>{initialData ? "Edit Author" : "Add New Author"}</h3>
+      <h3 className="text-yellow-400 text-lg font-semibold">
+        {initialData ? "Edit Author" : "Add New Author"}
+      </h3>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex justify-evenly">
         {/* Book Name */}
-        <label>
-          Name:
+        <label className="text-yellow-400 text-lg">
+          Name :
           <input
+            className="rounded-md ml-2 text-black"
             type="text"
             name="name"
             value={data.name}
@@ -81,9 +84,10 @@ export default function AuthorForm({ initialData, onSuccess, onClose }) {
           {errors.name && <p className="error">{errors.name}</p>}
         </label>
         {/* Birth Date */}
-        <label>
-          Birth Date:
+        <label className="text-yellow-400 text-lg ">
+          Birth Date :
           <input
+            className="rounded-md ml-2 text-black "
             type="text"
             name="birthDate"
             value={data.birthDate}
@@ -93,9 +97,10 @@ export default function AuthorForm({ initialData, onSuccess, onClose }) {
 
         {/* ountry */}
 
-        <label>
-          Country:
+        <label className="text-yellow-400 text-lg">
+          Country :
           <input
+            className="rounded-md ml-2 text-black"
             type="text"
             name="country"
             value={data.country}
@@ -105,10 +110,19 @@ export default function AuthorForm({ initialData, onSuccess, onClose }) {
 
         {/* Save or Cancel buttons */}
 
-        <button type="submit" disabled={isSubmitting}>
+        <button
+          className="text-yellow-400 font-bold hover:text-green-500"
+          type="submit"
+          disabled={isSubmitting}
+        >
           {isSubmitting ? "Saving..." : initialData ? "Update" : "Create"}
         </button>
-        <button type="button" onClick={onClose} disabled={isSubmitting}>
+        <button
+          className="text-yellow-400 font-bold hover:text-red-500"
+          type="button"
+          onClick={onClose}
+          disabled={isSubmitting}
+        >
           Cancel
         </button>
       </form>
