@@ -1,70 +1,77 @@
-import { createPublisher, updatePublisher } from "../api/publishersService";
+import { createAuthor, updateAuthor } from "../api/authorService";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
-export default function PublisherForm({ initialData, onSuccess, onClose }) {
+export default function AuthorForm({ initialData, onSuccess, onClose }) {
+  // keeps data for form
   const [data, setData] = useState({
     name: "",
-    address: "",
-    establishmentYear: "",
+    birthDate: "",
+    country: "",
   });
 
+  // for get error logs
   const [errors, setErrors] = useState({});
 
+  // when form is submiting button turn into false
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // when you update its fill forms with current data
   useEffect(() => {
     if (initialData) {
       setData({
         name: initialData.name || "",
-        address: initialData.address || "",
-        establishmentYear: initialData.establishmentYear || "",
+        birthDate: initialData.birthDate || "",
+        country: initialData.country || "",
       });
     }
   }, [initialData]);
 
+  // updates form data
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
+  // form control
   const validate = () => {
     let formErrors = {};
     setErrors(formErrors);
     return Object.keys(formErrors).length === 0;
   };
 
+  // main function when form submitted
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
     setIsSubmitting(true);
     try {
       if (initialData) {
-        await updatePublisher(initialData.id, data);
-        toast.success("Yayımcı başarıyla güncellendi!");
+        await updateAuthor(initialData.id, data);
+        toast.success("The author was updated.");
       } else {
-        await createPublisher(data);
-        toast.success("Yayımcı başarıyla oluşturuldu!");
+        await createAuthor(data);
+        toast.success("The author was created successfully.");
       }
 
-      onSuccess();
+      onSuccess(); // to reload the option list after the success
       onClose();
     } catch (error) {
-      console.error("API Hatası:", error);
-      toast.error("İşlem sırasında bir hata oluştu.");
+      toast.error("Something went wrong!", error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  // Layout for form
   return (
     <div>
-      <h3>{initialData ? "Yayımcıyı Düzenle" : "Yeni Yayımcı Ekle"}</h3>
+      <h3>{initialData ? "Edit Author" : "Add New Author"}</h3>
 
       <form onSubmit={handleSubmit}>
+        {/* Book Name */}
         <label>
-          Adı:
+          Name:
           <input
             type="text"
             name="name"
@@ -73,37 +80,36 @@ export default function PublisherForm({ initialData, onSuccess, onClose }) {
           />
           {errors.name && <p className="error">{errors.name}</p>}
         </label>
-
+        {/* Birth Date */}
         <label>
-          Adres:
+          Birth Date:
           <input
             type="text"
-            name="address"
-            value={data.address}
+            name="birthDate"
+            value={data.birthDate}
             onChange={handleChange}
           />
         </label>
 
+        {/* ountry */}
+
         <label>
-          Telefon:
+          Country:
           <input
             type="text"
-            name="establishmentYear"
-            value={data.establishmentYear}
+            name="country"
+            value={data.country}
             onChange={handleChange}
           />
         </label>
+
+        {/* Save or Cancel buttons */}
 
         <button type="submit" disabled={isSubmitting}>
-          {isSubmitting
-            ? "Kaydediliyor..."
-            : initialData
-            ? "Güncelle"
-            : "Oluştur"}
+          {isSubmitting ? "Saving..." : initialData ? "Update" : "Create"}
         </button>
-
         <button type="button" onClick={onClose} disabled={isSubmitting}>
-          İptal
+          Cancel
         </button>
       </form>
     </div>

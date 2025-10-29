@@ -1,79 +1,84 @@
-import React, { useEffect, useState } from "react";
-import { getCategories, deleteCategory } from "../api/categoryService";
+import { useEffect, useState } from "react";
+import { getAuthors, deleteAuthor } from "../api/authorService";
 import { toast } from "react-toastify";
-import CategoriesForm from "./CategoriesForm";
+import AuthorForm from "./AuthorForm";
 
-export default function CategoriesList() {
-  const [categories, setCategories] = useState([]);
+// This component menaging Author List
+export default function AuthorList() {
+  const [authors, setAuthors] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
   const [showForm, setShowForm] = useState(false);
 
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedAuthor, setSelectedAuthor] = useState(null);
 
-  const fetchCategories = async () => {
+  // API for authors
+  const fetchAuthors = async () => {
     setLoading(true);
     try {
-      const res = await getCategories();
-      setCategories(res.data);
+      const res = await getAuthors();
+      setAuthors(res.data);
     } catch (error) {
-      toast.error("Yazar listesi yüklenirken bir hata oluştu.");
-      console.error("Yüklenme Hatası:", error);
+      toast.error("Couldnt load the author list.", error);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchCategories();
+    fetchAuthors();
   }, []);
 
+  // delete author and about to situation get feedback with toast
   const handleDelete = async (id) => {
-    if (!confirm("Silmek istediğine emin misin?")) return;
+    if (!confirm("Are you sure you want to delete?")) return;
     try {
-      await deleteCategory(id);
-
-      setCategories((prev) => prev.filter((p) => p.id !== id));
-      toast.success("Category başarıyla silindi!");
+      await deleteAuthor(id);
+      setAuthors((prev) => prev.filter((p) => p.id !== id));
+      toast.success("The author was deleted successfully!");
     } catch (error) {
-      toast.error("Silme işleminde bir hata oluştu.");
-      console.error("Silme Hatası:", error);
+      toast.error("Error during deletion.", error);
     }
   };
 
-  const handleEdit = (categoryToEdit) => {
-    setSelectedCategory(categoryToEdit);
+  // edited author
+  const handleEdit = (authorToEdit) => {
+    setSelectedAuthor(authorToEdit);
     setShowForm(true);
   };
 
+  // new author
   const handleNew = () => {
-    setSelectedCategory(null);
+    setSelectedAuthor(null);
     setShowForm(true);
   };
 
   const handleFormSuccess = () => {
-    fetchCategories();
+    fetchAuthors();
     setShowForm(false);
   };
 
   if (loading) {
-    return <div className="max-w-[1200px] mx-auto p-6">Yükleniyor...</div>;
+    return <div className="max-w-[1200px] mx-auto p-6">Loading...</div>;
   }
 
+  // Layout for the list
   return (
     <div className="max-w-[1200px] mx-auto p-6">
+      {/* New author button */}
+
       <button
         onClick={handleNew}
         className="mb-4 p-2 bg-blue-500 text-white rounded"
       >
-        Yeni Category Ekle
+        Add New Author
       </button>
 
       {showForm && (
         <div className="mb-8 p-4 border rounded shadow-md">
-          <CategoriesForm
-            initialData={selectedCategory}
+          <AuthorForm
+            initialData={selectedAuthor}
             onSuccess={handleFormSuccess}
             onClose={() => setShowForm(false)}
           />
@@ -81,33 +86,42 @@ export default function CategoriesList() {
       )}
 
       <table className="min-w-full border-collapse">
+        {/* List head  */}
+
         <thead>
           <tr className="bg-gray-200">
             <th className="border p-2 text-left">ID</th>
-            <th className="border p-2 text-left">Category Name</th>
-            <th className="border p-2 text-left">Description</th>
-            <th className="border p-2 text-left">İşlemler</th>
+            <th className="border p-2 text-left">Name</th>
+            <th className="border p-2 text-left">Birth Date</th>
+            <th className="border p-2 text-left">Country</th>
+            <th className="border p-2 text-left">Actions</th>
           </tr>
         </thead>
 
+        {/* List body  */}
+
         <tbody>
-          {categories.map((p) => (
+          {authors.map((p) => (
             <tr key={p.id} className="hover:bg-gray-50">
               <td className="border p-2">{p.id}</td>
               <td className="border p-2">{p.name}</td>
-              <td className="border p-2">{p.description}</td>
+              <td className="border p-2">{p.birthDate}</td>
+              <td className="border p-2">{p.country}</td>
+
+              {/* EDIT or DELETE buttons */}
+
               <td className="border p-2 space-x-2">
                 <button
                   onClick={() => handleEdit(p)}
                   className="text-blue-600 hover:underline"
                 >
-                  Düzenle
+                  EDIT
                 </button>
                 <button
                   onClick={() => handleDelete(p.id)}
                   className="text-red-600 hover:underline"
                 >
-                  Sil
+                  DELETE
                 </button>
               </td>
             </tr>

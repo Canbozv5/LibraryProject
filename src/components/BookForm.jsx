@@ -1,45 +1,47 @@
-import { createBorrow, updateBorrow } from "../api/borrowService";
+import { createBook, updateBook } from "../api/bookService";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { getBooks } from "../api/bookService";
 import { getAuthors } from "../api/authorService";
 import { getCategories } from "../api/categoryService";
 import { getPublishers } from "../api/publishersService";
 
-export default function BorrowForm({ initialData, onSuccess, onClose }) {
+// This component menaging Book Form
+export default function BookForm({ initialData, onSuccess, onClose }) {
+  // keeps data for form
   const [data, setData] = useState({
-    borrowerName: "",
-    borrowerMail: "",
-    borrowingDate: "",
-    returnDate: "",
-    bookId: "",
+    name: "",
+    publicationYear: "",
+    stock: 0,
     publisherId: "",
     authorId: "",
     categoryId: "",
   });
 
-  const [books, setBooks] = useState([]);
-
-  const [authors, setAuthors] = useState([]);
-
+  // publisher list in select option.
   const [publishers, setPublishers] = useState([]);
 
+  // author list in select option.
+  const [authors, setAuthors] = useState([]);
+
+  // category list in select option.
   const [categories, setCategories] = useState([]);
 
+  // for get error logs
   const [errors, setErrors] = useState({});
 
+  // when form is submiting button turn into false
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // we are taking all other ones with this API
   const fetchOtherLists = () => {
-    Promise.all([getBooks(), getPublishers(), getAuthors(), getCategories()])
-      .then(([book, pub, auth, categ]) => {
-        setBooks(book.data);
-        setAuthors(auth.data);
+    Promise.all([getPublishers(), getAuthors(), getCategories()])
+      .then(([pub, auth, categ]) => {
         setPublishers(pub.data);
+        setAuthors(auth.data);
         setCategories(categ.data);
       })
-      .catch((errors) => {
-        console.error("Yükleme hatası", errors);
+      .catch((error) => {
+        toast.error("Loading error.", error);
       });
   };
 
@@ -47,14 +49,13 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
     fetchOtherLists();
   }, []);
 
+  // when you update its fill forms with current data
   useEffect(() => {
     if (initialData) {
       setData({
-        borrowerName: initialData.borrowerName || "",
-        borrowerMail: initialData.borrowerMail || "",
-        borrowingDate: initialData.borrowingDate || "",
-        retrunDate: initialData.retrunDate || "",
-        bookId: initialData.bookId || "",
+        name: initialData.name || "",
+        publicationYear: initialData.publicationYear || "",
+        stock: initialData.stock || "",
         publisherId: initialData.publisherId || "",
         authorId: initialData.authorId || "",
         categoryId: initialData.categoryId || "",
@@ -62,29 +63,30 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
     }
   }, [initialData]);
 
+  // updates form data
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
+  // form control
   const validate = () => {
     let formErrors = {};
     setErrors(formErrors);
     return Object.keys(formErrors).length === 0;
   };
 
+  // main function when form submitted
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
     setIsSubmitting(true);
 
+    // updating form
     const load = {
-      borrowerName: data.borrowerName,
-      borrowerMail: data.borrowerMail,
-      borrowingDate: data.borrowingDate,
-      retrunDate: data.retrunDate,
-      books: data.bookId ? { id: parseInt(data.bookId) } : null,
+      name: data.name,
+      publicationYear: parseInt(data.publicationYear),
+      stock: parseInt(data.stock),
       author: data.authorId ? { id: parseInt(data.authorId) } : null,
       publisher: data.publisherId ? { id: parseInt(data.publisherId) } : null,
       categories: data.categoryId ? [{ id: parseInt(data.categoryId) }] : [],
@@ -92,91 +94,63 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
 
     try {
       if (initialData) {
-        await updateBorrow(initialData.id, load);
-        toast.success("Ödünç alım başarıyla güncellendi!");
+        await updateBook(initialData.id, load);
+        toast.success("The book was updated.");
       } else {
-        await createBorrow(load);
-        toast.success("Ödünç alım başarıyla oluşturuldu!");
+        await createBook(load);
+        toast.success("The book was created successfully.");
       }
 
       onSuccess();
       onClose();
     } catch (error) {
-      console.error("API Hatası:", error);
-      toast.error("İşlem sırasında bir hata oluştu.");
+      toast.error("Something went wrong!", error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  // Layout for form
   return (
     <div>
-      <h3>{initialData ? "Ödünç Alımı Düzenle" : "Yeni Ödünç Alım Ekle"}</h3>
+      <h3>{initialData ? "Edit Book" : "Add New Book"}</h3>
 
       <form onSubmit={handleSubmit}>
+        {/* Book Name */}
         <label>
-          Borrower Name:
+          Book Name:
           <input
             type="text"
-            name="borrowerName"
-            value={data.borrowerName}
+            name="name"
+            value={data.name}
             onChange={handleChange}
           />
           {errors.name && <p className="error">{errors.name}</p>}
         </label>
 
         <label>
-          Borrower Mail:
+          Publication Year:
           <input
             type="text"
-            name="borrowerMail"
-            value={data.borrowerMail}
+            name="publicationYear"
+            value={data.publicationYear}
             onChange={handleChange}
           />
         </label>
 
         <label>
-          Borrowing Date:
+          Stock:
           <input
             type="text"
-            name="borrowingDate"
-            value={data.borrowingDate}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          Return Date:
-          <input
-            type="text"
-            name="returnDate"
-            value={data.returnDate}
+            name="stock"
+            value={data.stock}
             onChange={handleChange}
           />
         </label>
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Book:
-          </label>
-          <select
-            name="bookId"
-            value={data.bookId}
-            onChange={handleChange}
-            className="w-full border rounded-md p-2"
-          >
-            <option value="">Seçiniz</option>
-            {books.map((book) => (
-              <option key={book.id} value={book.id}>
-                {book.name}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Yazar:
+            Author:
           </label>
           <select
             name="authorId"
@@ -184,7 +158,7 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
             onChange={handleChange}
             className="w-full border rounded-md p-2"
           >
-            <option value="">Seçiniz</option>
+            <option value="">Please Select</option>
             {authors.map((aut) => (
               <option key={aut.id} value={aut.id}>
                 {aut.name}
@@ -195,7 +169,7 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Yayımcı:
+            Publisher:
           </label>
           <select
             name="publisherId"
@@ -203,7 +177,7 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
             onChange={handleChange}
             className="w-full border rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"
           >
-            <option value="">Seçiniz</option>
+            <option value="">Please Select</option>
             {publishers.map((pub) => (
               <option key={pub.id} value={pub.id}>
                 {pub.name}
@@ -217,7 +191,7 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Kategori:
+            Category:
           </label>
           <select
             name="categoryId"
@@ -225,7 +199,7 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
             onChange={handleChange}
             className="w-full border rounded-md p-2"
           >
-            <option value="">Seçiniz</option>
+            <option value="">Please Select</option>
             {categories.map((cat) => (
               <option key={cat.id} value={cat.id}>
                 {cat.name}
@@ -234,16 +208,14 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
           </select>
         </div>
 
+        {/* Save or Cancel buttons */}
+
         <button type="submit" disabled={isSubmitting}>
-          {isSubmitting
-            ? "Kaydediliyor..."
-            : initialData
-            ? "Güncelle"
-            : "Oluştur"}
+          {isSubmitting ? "Saving..." : initialData ? "Update" : "Create"}
         </button>
 
         <button type="button" onClick={onClose} disabled={isSubmitting}>
-          İptal
+          Cancel
         </button>
       </form>
     </div>

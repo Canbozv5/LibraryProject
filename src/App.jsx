@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
-import PublishersList from "./pages/PublishersList";
-import AuthorList from "./pages/AuthorList";
-import CategoriesList from "./pages/CategoriesList";
-import BookList from "./pages/BookList";
-import BorrowList from "./pages/BorrowList";
+import AuthorList from "./components/AuthorList";
+import PublishersList from "./components/PublishersList";
+import CategoriesList from "./components/CategoriesList";
+import BookList from "./components/BookList";
+import BorrowList from "./components/BorrowList";
 
 export default function App() {
   return (

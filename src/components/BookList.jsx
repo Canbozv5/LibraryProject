@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getBooks, deleteBook } from "../api/bookService";
 import { toast } from "react-toastify";
 import BookForm from "./BookForm";
 
+// This component menaging Book List
 export default function BookList() {
   const [books, setBooks] = useState([]);
 
@@ -12,14 +13,14 @@ export default function BookList() {
 
   const [selectedBook, setSelectedBook] = useState(null);
 
+  // API for books
   const fetchBooks = async () => {
     setLoading(true);
     try {
       const res = await getBooks();
       setBooks(res.data);
     } catch (error) {
-      toast.error("Kitap listesi yüklenirken bir hata oluştu.");
-      console.error("Yüklenme Hatası:", error);
+      toast.error("Couldnt load the book list.", error);
     } finally {
       setLoading(false);
     }
@@ -29,23 +30,25 @@ export default function BookList() {
     fetchBooks();
   }, []);
 
+  // delete book and about to situation get feedback with toast
   const handleDelete = async (id) => {
-    if (!confirm("Silmek istediğine emin misin?")) return;
+    if (!confirm("Are you sure you want to delete??")) return;
     try {
       await deleteBook(id);
       setBooks((prev) => prev.filter((p) => p.id !== id));
-      toast.success("Kitap başarıyla silindi!");
+      toast.success("The borrow was deleted successfully!");
     } catch (error) {
-      toast.error("Silme işleminde bir hata oluştu.");
-      console.error("Silme Hatası:", error);
+      toast.error("Error during deletion.", error);
     }
   };
 
+  // edited book
   const handleEdit = (bookToEdit) => {
     setSelectedBook(bookToEdit);
     setShowForm(true);
   };
 
+  // new borrow
   const handleNew = () => {
     setSelectedBook(null);
     setShowForm(true);
@@ -57,16 +60,19 @@ export default function BookList() {
   };
 
   if (loading) {
-    return <div className="max-w-[1200px] mx-auto p-6">Yükleniyor...</div>;
+    return <div className="max-w-[1200px] mx-auto p-6">Loading...</div>;
   }
 
+  // Layout for List
   return (
     <div className="max-w-[1200px] mx-auto p-6">
+      {/* New book button */}
+
       <button
         onClick={handleNew}
         className="mb-4 p-2 bg-blue-500 text-white rounded"
       >
-        Yeni Kitap Ekle
+        Add New Book
       </button>
 
       {showForm && (
@@ -80,6 +86,8 @@ export default function BookList() {
       )}
 
       <table className="min-w-full border-collapse">
+        {/* List head  */}
+
         <thead>
           <tr className="bg-gray-200">
             <th className="border p-2 text-left">ID</th>
@@ -89,9 +97,11 @@ export default function BookList() {
             <th className="border p-2 text-left">Author</th>
             <th className="border p-2 text-left">Publisher</th>
             <th className="border p-2 text-left">Category</th>
-            <th className="border p-2 text-left">İşlemler</th>
+            <th className="border p-2 text-left">Actions</th>
           </tr>
         </thead>
+
+        {/* List body  */}
 
         <tbody>
           {books.map((p) => (
@@ -100,25 +110,28 @@ export default function BookList() {
               <td className="border p-2">{p.name}</td>
               <td className="border p-2">{p.publicationYear}</td>
               <td className="border p-2">{p.stock}</td>
-              <td className="border p-2">{p.author?.name || "N/A"}</td>
-              <td className="border p-2">{p.publisher?.name || "N/A"}</td>
+              <td className="border p-2">{p.author?.name}</td>
+              <td className="border p-2">{p.publisher?.name}</td>
               <td className="border p-2">
                 {p.categories && p.categories.length > 0
                   ? p.categories[0].name
-                  : "N/A"}
+                  : "n/a"}
               </td>
+
+              {/* EDIT or DELETE buttons */}
+
               <td className="border p-2 space-x-2">
                 <button
                   onClick={() => handleEdit(p)}
                   className="text-blue-600 hover:underline"
                 >
-                  Düzenle
+                  EDIT
                 </button>
                 <button
                   onClick={() => handleDelete(p.id)}
                   className="text-red-600 hover:underline"
                 >
-                  Sil
+                  DELETE
                 </button>
               </td>
             </tr>

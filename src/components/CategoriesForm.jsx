@@ -1,70 +1,76 @@
-import { createAuthor, updateAuthor } from "../api/authorService";
+import { createCategory, updateCategory } from "../api/categoryService";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
-export default function AuthorForm({ initialData, onSuccess, onClose }) {
+// This component menaging Categories Form
+export default function CategoriesForm({ initialData, onSuccess, onClose }) {
+  // keeps data for form
   const [data, setData] = useState({
     name: "",
-    birthDate: "",
-    country: "",
+    description: "",
   });
 
+  // for get error logs
   const [errors, setErrors] = useState({});
 
+  // when form is submiting button turn into false
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // when you update its fill forms with current data
   useEffect(() => {
     if (initialData) {
       setData({
         name: initialData.name || "",
-        birthDate: initialData.birthDate || "",
-        country: initialData.country || "",
+        description: initialData.description || "",
       });
     }
   }, [initialData]);
 
+  // updates form data
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
+  // form control
   const validate = () => {
     let formErrors = {};
     setErrors(formErrors);
     return Object.keys(formErrors).length === 0;
   };
 
+  // main function when form submitted
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
     setIsSubmitting(true);
     try {
       if (initialData) {
-        await updateAuthor(initialData.id, data);
-        toast.success("Yazar başarıyla güncellendi!");
+        await updateCategory(initialData.id, data);
+        toast.success("The category was updated.");
       } else {
-        await createAuthor(data);
-        toast.success("Yazar başarıyla kayıt edildi!");
+        await createCategory(data);
+        toast.success("The category was created successfully."); // feedback to user
       }
 
-      onSuccess();
+      onSuccess(); // to reload the option list after the success
       onClose();
     } catch (error) {
-      console.error("API Hatası:", error);
-      toast.error("İşlem sırasında bir hata oluştu.");
+      toast.error("Something went wrong!", error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  // Layout for form
   return (
     <div>
-      <h3>{initialData ? "Yazarı Düzenle" : "Yeni Yazar Ekle"}</h3>
+      <h3>{initialData ? "Edit Category" : "Add New Category"}</h3>
 
       <form onSubmit={handleSubmit}>
+        {/* Borrower Name */}
         <label>
-          Adı:
+          Category Name:
           <input
             type="text"
             name="name"
@@ -75,35 +81,23 @@ export default function AuthorForm({ initialData, onSuccess, onClose }) {
         </label>
 
         <label>
-          Birth Date:
+          Description:
           <input
             type="text"
-            name="birthDate"
-            value={data.birthDate}
+            name="description"
+            value={data.description}
             onChange={handleChange}
           />
         </label>
 
-        <label>
-          Country:
-          <input
-            type="text"
-            name="country"
-            value={data.country}
-            onChange={handleChange}
-          />
-        </label>
+        {/* Save or Cancel buttons */}
 
         <button type="submit" disabled={isSubmitting}>
-          {isSubmitting
-            ? "Kaydediliyor..."
-            : initialData
-            ? "Güncelle"
-            : "Oluştur"}
+          {isSubmitting ? "Saving..." : initialData ? "Update" : "Create"}
         </button>
 
         <button type="button" onClick={onClose} disabled={isSubmitting}>
-          İptal
+          Cancel
         </button>
       </form>
     </div>
