@@ -8,6 +8,16 @@ Bu proje, güçlü bir **React** ön yüzü ve modern **Tailwind CSS** stil küt
 
 ---
 
+## Uygulamanın Ufak Bir Önizlemesi
+
+![Web sitesinin önizlemesi](/src/assets/images/review.jpg)
+
+---
+
+![Web sitesinin önizlemesi](/src/assets/images/review2.jpg)
+
+---
+
 ## İçindekiler
 
 - [Genel Bakış](#genel-bakış)
