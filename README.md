@@ -4,7 +4,7 @@ Bu proje, güçlü bir **React** ön yüzü ve modern **Tailwind CSS** stil küt
 
 ## Canlı Demoya Ulaşmak İçin
 
-📌 https://candid-cactus-9ea302.netlify.app 📌
+📌 [Web Site Link](https://canslibraryproject.netlify.app) 📌
 
 ---
 
