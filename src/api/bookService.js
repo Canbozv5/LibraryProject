@@ -1,6 +1,6 @@
 import axios from "./axios";
 
-const baseURL = "http://localhost:8080/api/v1";
+const baseURL = "https://libraryproject-backend-2.onrender.com/api/v1";
 
 export const getBooks = () => axios.get(`${baseURL}/books`);
 export const getBook = (id) => axios.get(`${baseURL}/books/${id}`);
