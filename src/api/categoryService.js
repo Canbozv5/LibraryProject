@@ -1,6 +1,6 @@
 import axios from "./axios";
 
-const baseURL = "http://localhost:8080/api/v1";
+const baseURL = "https://libraryproject-backend-2.onrender.com/api/v1";
 
 export const getCategories = () => axios.get(`${baseURL}/categories`);
 export const getCategory = (id) => axios.get(`${baseURL}/categories/${id}`);
