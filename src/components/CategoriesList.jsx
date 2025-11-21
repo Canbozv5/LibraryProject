@@ -60,7 +60,9 @@ export default function CategoriesList() {
   };
 
   if (loading) {
-    return <div className="max-w-[1200px] mx-auto p-6">Loading...</div>;
+    return (
+      <div className="max-w-[1200px] text-white mx-auto p-6">Loading...</div>
+    );
   }
 
   // Layout for List

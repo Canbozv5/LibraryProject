@@ -3,7 +3,7 @@ import { getAuthors, deleteAuthor } from "../api/authorService";
 import { toast } from "react-toastify";
 import AuthorForm from "./AuthorForm";
 
-// This component menaging Author List
+// This component managing Author List
 export default function AuthorList() {
   const [authors, setAuthors] = useState([]);
 
@@ -60,7 +60,9 @@ export default function AuthorList() {
   };
 
   if (loading) {
-    return <div className="max-w-[1200px] mx-auto p-6">Loading...</div>;
+    return (
+      <div className="max-w-[1200px] text-white mx-auto p-6">Loading...</div>
+    );
   }
 
   // Layout for the list
