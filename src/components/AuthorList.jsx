@@ -67,7 +67,7 @@ export default function AuthorList() {
 
   // Layout for the list
   return (
-    <div className="max-w-[1200px] mx-auto p-6 mt-14">
+    <div className="max-w-[1200px] mx-auto p-6">
       {/* New author button */}
 
       <button
