@@ -87,79 +87,81 @@ export default function BorrowList() {
         </div>
       )}
 
-      <table className="min-w-full border-collapse">
-        {/* List head  */}
+      <div className="overflow-x-auto w-full mt-4 border border-yellow-600 rounded-lg">
+        <table className="min-w-full border-collapse whitespace-nowrap">
+          {/* List head  */}
 
-        <thead>
-          <tr className="bg-gray-200 text-center">
-            <th className="border p-2 text-yellow-900">ID</th>
-            <th className="border p-2 text-yellow-900">Borrower Name</th>
-            <th className="border p-2 text-yellow-900">Borrower Mail</th>
-            <th className="border p-2 text-yellow-900">Borrowing Date</th>
-            <th className="border p-2 text-yellow-900">Return Date</th>
-            <th className="border p-2 text-yellow-900">Book</th>
-            <th className="border p-2 text-yellow-900">Author</th>
-            <th className="border p-2 text-yellow-900">Publisher</th>
-            <th className="border p-2 text-yellow-900">Category</th>
-            <th className="border p-2 text-yellow-900">Actions</th>
-          </tr>
-        </thead>
-
-        {/* List body  */}
-
-        <tbody>
-          {borrows.map((borrow) => (
-            <tr key={borrow.id} className="text-center">
-              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
-                {borrow.id}
-              </td>
-              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
-                {borrow.borrowerName}
-              </td>
-              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
-                {borrow.borrowerMail}
-              </td>
-              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
-                {borrow.borrowingDate}
-              </td>
-              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
-                {borrow.returnDate || "Not returned yet."}
-              </td>
-              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
-                {borrow.book?.name}
-              </td>
-              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
-                {borrow.book?.author?.name}
-              </td>
-              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
-                {borrow.book?.publisher?.name}
-              </td>
-              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
-                {borrow.book?.categories && borrow.book.categories.length > 0
-                  ? borrow.book.categories[0].name
-                  : "n/a"}
-              </td>
-
-              {/* EDIT or DELETE buttons */}
-
-              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent space-x-2">
-                <button
-                  onClick={() => handleEdit(borrow)}
-                  className="text-blue-600 font-semibold hover:underline"
-                >
-                  EDIT
-                </button>
-                <button
-                  onClick={() => handleDelete(borrow.id)}
-                  className="text-red-600 font-semibold hover:underline"
-                >
-                  DELETE
-                </button>
-              </td>
+          <thead>
+            <tr className="bg-gray-200 text-center">
+              <th className="border p-2 text-yellow-900">ID</th>
+              <th className="border p-2 text-yellow-900">Borrower Name</th>
+              <th className="border p-2 text-yellow-900">Borrower Mail</th>
+              <th className="border p-2 text-yellow-900">Borrowing Date</th>
+              <th className="border p-2 text-yellow-900">Return Date</th>
+              <th className="border p-2 text-yellow-900">Book</th>
+              <th className="border p-2 text-yellow-900">Author</th>
+              <th className="border p-2 text-yellow-900">Publisher</th>
+              <th className="border p-2 text-yellow-900">Category</th>
+              <th className="border p-2 text-yellow-900">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          {/* List body  */}
+
+          <tbody>
+            {borrows.map((borrow) => (
+              <tr key={borrow.id} className="text-center">
+                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                  {borrow.id}
+                </td>
+                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                  {borrow.borrowerName}
+                </td>
+                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                  {borrow.borrowerMail}
+                </td>
+                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                  {borrow.borrowingDate}
+                </td>
+                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                  {borrow.returnDate || "Not returned yet."}
+                </td>
+                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                  {borrow.book?.name}
+                </td>
+                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                  {borrow.book?.author?.name}
+                </td>
+                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                  {borrow.book?.publisher?.name}
+                </td>
+                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                  {borrow.book?.categories && borrow.book.categories.length > 0
+                    ? borrow.book.categories[0].name
+                    : "n/a"}
+                </td>
+
+                {/* EDIT or DELETE buttons */}
+
+                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent space-x-2">
+                  <button
+                    onClick={() => handleEdit(borrow)}
+                    className="text-blue-600 font-semibold hover:underline"
+                  >
+                    EDIT
+                  </button>
+                  <button
+                    onClick={() => handleDelete(borrow.id)}
+                    className="text-red-600 font-semibold hover:underline"
+                  >
+                    DELETE
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

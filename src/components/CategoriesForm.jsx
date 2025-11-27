@@ -69,35 +69,37 @@ export default function CategoriesForm({ initialData, onSuccess, onClose }) {
         {initialData ? "Edit Category" : "Add New Category"}
       </h3>
 
-      <form onSubmit={handleSubmit} className="flex justify-evenly">
+      <form onSubmit={handleSubmit}>
         {/* Borrower Name */}
-        <label className="text-yellow-400 text-lg">
-          Category Name:
-          <input
-            className="rounded-md ml-2 text-black"
-            type="text"
-            name="name"
-            value={data.name}
-            onChange={handleChange}
-          />
-          {errors.name && <p className="error">{errors.name}</p>}
-        </label>
+        <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
+          <label className="text-yellow-400 text-lg mb-1 w-full">
+            Category Name:
+            <input
+              className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
+              type="text"
+              name="name"
+              value={data.name}
+              onChange={handleChange}
+            />
+            {errors.name && <p className="error">{errors.name}</p>}
+          </label>
 
-        <label className="text-yellow-400 text-lg ">
-          Description:
-          <input
-            className="rounded-md ml-2 text-black"
-            type="text"
-            name="description"
-            value={data.description}
-            onChange={handleChange}
-          />
-        </label>
+          <label className="text-yellow-400 text-lg mb-1 w-full">
+            Description:
+            <input
+              className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
+              type="text"
+              name="description"
+              value={data.description}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
 
         {/* Save or Cancel buttons */}
 
         <button
-          className="text-yellow-400 font-bold hover:text-green-500"
+          className="text-yellow-400 text-xl font-bold hover:text-green-500"
           type="submit"
           disabled={isSubmitting}
         >
@@ -105,7 +107,7 @@ export default function CategoriesForm({ initialData, onSuccess, onClose }) {
         </button>
 
         <button
-          className="text-yellow-400 font-bold hover:text-red-500"
+          className="text-yellow-400 text-xl font-bold hover:text-red-500 ml-4"
           type="button"
           onClick={onClose}
           disabled={isSubmitting}

@@ -72,46 +72,48 @@ export default function PublisherForm({ initialData, onSuccess, onClose }) {
         {initialData ? "Edit Publisher" : "Add New Publisher"}
       </h3>
 
-      <form onSubmit={handleSubmit} className="flex justify-evenly">
+      <form onSubmit={handleSubmit}>
         {/* Category Name */}
-        <label className="text-yellow-400 text-lg">
-          Name:
-          <input
-            className="rounded-md ml-2 text-black"
-            type="text"
-            name="name"
-            value={data.name}
-            onChange={handleChange}
-          />
-          {errors.name && <p className="error">{errors.name}</p>}
-        </label>
+        <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
+          <label className="text-yellow-400 text-lg mb-1 w-full">
+            Name:
+            <input
+              className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
+              type="text"
+              name="name"
+              value={data.name}
+              onChange={handleChange}
+            />
+            {errors.name && <p className="error">{errors.name}</p>}
+          </label>
 
-        <label className="text-yellow-400 text-lg ">
-          Address:
-          <input
-            className="rounded-md ml-2 text-black "
-            type="text"
-            name="address"
-            value={data.address}
-            onChange={handleChange}
-          />
-        </label>
+          <label className="text-yellow-400 text-lg mb-1 w-full">
+            Address:
+            <input
+              className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
+              type="text"
+              name="address"
+              value={data.address}
+              onChange={handleChange}
+            />
+          </label>
 
-        <label className="text-yellow-400 text-lg">
-          Establishment Year:
-          <input
-            className="rounded-md ml-2 text-black"
-            type="text"
-            name="establishmentYear"
-            value={data.establishmentYear}
-            onChange={handleChange}
-          />
-        </label>
+          <label className="text-yellow-400 text-lg mb-1 w-full">
+            Establishment Year:
+            <input
+              className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
+              type="text"
+              name="establishmentYear"
+              value={data.establishmentYear}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
 
         {/* Save or Cancel buttons */}
 
         <button
-          className="text-yellow-400 font-bold hover:text-green-500"
+          className="text-yellow-400 text-xl font-bold hover:text-green-500"
           type="submit"
           disabled={isSubmitting}
         >
@@ -119,7 +121,7 @@ export default function PublisherForm({ initialData, onSuccess, onClose }) {
         </button>
 
         <button
-          className="text-yellow-400 font-bold hover:text-red-500"
+          className="text-yellow-400 text-xl font-bold hover:text-red-500 ml-4"
           type="button"
           onClick={onClose}
           disabled={isSubmitting}

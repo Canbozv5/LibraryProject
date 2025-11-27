@@ -119,11 +119,11 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
 
       <form onSubmit={handleSubmit}>
         {/* Book Name */}
-        <div className="flex justify-evenly">
-          <label className="text-yellow-400 text-lg mb-1">
+        <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
+          <label className="text-yellow-400 text-lg mb-1 w-full">
             Book Name :
             <input
-              className="w-50 ml-2 border rounded-md  text-black"
+              className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
               type="text"
               name="name"
               value={data.name}
@@ -132,10 +132,10 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
             {errors.name && <p className="error">{errors.name}</p>}
           </label>
 
-          <label className="text-yellow-400 text-lg mb-1">
+          <label className="text-yellow-400 text-lg mb-1 w-full">
             Publication Year :
             <input
-              className="w-50 ml-2 border rounded-md  text-black"
+              className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
               type="text"
               name="publicationYear"
               value={data.publicationYear}
@@ -143,10 +143,10 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
             />
           </label>
 
-          <label className="text-yellow-400 text-lg mb-1">
+          <label className="text-yellow-400 text-lg mb-1 w-full">
             Stock :
             <input
-              className="w-50 ml-2 border rounded-md  text-black"
+              className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
               type="text"
               name="stock"
               value={data.stock}

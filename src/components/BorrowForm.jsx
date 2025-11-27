@@ -121,65 +121,67 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
 
       <form onSubmit={handleSubmit}>
         {/* Borrower Name */}
-        <div className="flex justify-evenly">
-          <label className="text-yellow-400 text-lg mb-1 ml-1">
+        <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
+          <label className="text-yellow-400 text-lg mb-1 w-full">
             Borrower Name:
+            <input
+              className="w-full ml-0 md:ml-1 border rounded-md text-black p-1"
+              type="text"
+              name="borrowerName"
+              value={data.borrowerName}
+              onChange={handleChange}
+            />
+            {errors.borrowerName && (
+              <p className="text-red-500 text-xs mt-1">{errors.borrowerName}</p>
+            )}
           </label>
-          <input
-            type="text"
-            name="borrowerName"
-            value={data.borrowerName}
-            onChange={handleChange}
-            className="w-50 border rounded-md  text-black"
-          />
-          {errors.borrowerName && (
-            <p className="text-red-500 text-xs mt-1">{errors.borrowerName}</p>
-          )}
 
           {/* Borrower Mail */}
 
-          <label className="text-yellow-400 text-lg mb-1 ml-1">
+          <label className="text-yellow-400 text-lg mb-1 w-full">
             Borrower Mail:
+            <input
+              className="w-full ml-0 md:ml-1 border rounded-md text-black p-1"
+              type="email"
+              name="borrowerMail"
+              value={data.borrowerMail}
+              onChange={handleChange}
+            />
+            {errors.borrowerMail && (
+              <p className="text-red-500 text-xs mt-1">{errors.borrowerMail}</p>
+            )}
           </label>
-          <input
-            type="email"
-            name="borrowerMail"
-            value={data.borrowerMail}
-            onChange={handleChange}
-            className="w-50  border rounded-md  text-black"
-          />
-          {errors.borrowerMail && (
-            <p className="text-red-500 text-xs mt-1">{errors.borrowerMail}</p>
-          )}
 
           {/* Borrowing Date */}
 
-          <label className="text-yellow-400 text-lg mb-1 ml-1">
+          <label className="text-yellow-400 text-lg mb-1 w-full">
             Borrowing Date:
+            <input
+              className="w-full ml-0 md:ml-1 border rounded-md text-black p-1"
+              type="date"
+              name="borrowingDate"
+              value={data.borrowingDate}
+              onChange={handleChange}
+            />
+            {errors.borrowingDate && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.borrowingDate}
+              </p>
+            )}
           </label>
-          <input
-            type="date"
-            name="borrowingDate"
-            value={data.borrowingDate}
-            onChange={handleChange}
-            className="w-50 border rounded-md  text-black"
-          />
-          {errors.borrowingDate && (
-            <p className="text-red-500 text-xs mt-1">{errors.borrowingDate}</p>
-          )}
 
           {/* Return Date */}
 
-          <label className="block text-yellow-400 text-lg mb-1 ml-1">
+          <label className="text-yellow-400 text-lg mb-1 w-full">
             Return Date:
+            <input
+              className="w-full ml-0 md:ml-1 border rounded-md text-black p-1"
+              type="date"
+              name="returnDate"
+              value={data.returnDate}
+              onChange={handleChange}
+            />
           </label>
-          <input
-            type="date"
-            name="returnDate"
-            value={data.returnDate}
-            onChange={handleChange}
-            className="w-50 border rounded-md  text-black"
-          />
         </div>
 
         {/* book select option */}
@@ -203,24 +205,22 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
 
         {/* Save or Cancel buttons */}
 
-        <div className="flex gap-2">
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="text-yellow-400 text-xl font-bold hover:text-green-500"
-          >
-            {isSubmitting ? "Saving..." : initialData ? "Update" : "Create"}
-          </button>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="text-yellow-400 text-xl font-bold hover:text-green-500"
+        >
+          {isSubmitting ? "Saving..." : initialData ? "Update" : "Create"}
+        </button>
 
-          <button
-            type="button"
-            onClick={onClose}
-            disabled={isSubmitting}
-            className="text-yellow-400 text-xl font-bold hover:text-red-500 ml-4"
-          >
-            Cancel
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={onClose}
+          disabled={isSubmitting}
+          className="text-yellow-400 text-xl font-bold hover:text-red-500 ml-4"
+        >
+          Cancel
+        </button>
       </form>
     </div>
   );

@@ -70,55 +70,56 @@ export default function AuthorForm({ initialData, onSuccess, onClose }) {
         {initialData ? "Edit Author" : "Add New Author"}
       </h3>
 
-      <form onSubmit={handleSubmit} className="flex justify-evenly">
+      <form onSubmit={handleSubmit}>
         {/* Book Name */}
-        <label className="text-yellow-400 text-lg">
-          Name :
-          <input
-            className="rounded-md ml-2 text-black"
-            type="text"
-            name="name"
-            value={data.name}
-            onChange={handleChange}
-          />
-          {errors.name && <p className="error">{errors.name}</p>}
-        </label>
-        {/* Birth Date */}
-        <label className="text-yellow-400 text-lg ">
-          Birth Date :
-          <input
-            className="rounded-md ml-2 text-black "
-            type="text"
-            name="birthDate"
-            value={data.birthDate}
-            onChange={handleChange}
-          />
-        </label>
+        <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
+          <label className="text-yellow-400 text-lg mb-1 w-full">
+            Name :
+            <input
+              className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
+              type="text"
+              name="name"
+              value={data.name}
+              onChange={handleChange}
+            />
+            {errors.name && <p className="error">{errors.name}</p>}
+          </label>
+          {/* Birth Date */}
+          <label className="text-yellow-400 text-lg mb-1 w-full">
+            Birth Date :
+            <input
+              className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
+              type="text"
+              name="birthDate"
+              value={data.birthDate}
+              onChange={handleChange}
+            />
+          </label>
 
-        {/* ountry */}
+          {/* country */}
 
-        <label className="text-yellow-400 text-lg">
-          Country :
-          <input
-            className="rounded-md ml-2 text-black"
-            type="text"
-            name="country"
-            value={data.country}
-            onChange={handleChange}
-          />
-        </label>
-
+          <label className="text-yellow-400 text-lg mb-1 w-full">
+            Country :
+            <input
+              className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
+              type="text"
+              name="country"
+              value={data.country}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
         {/* Save or Cancel buttons */}
 
         <button
-          className="text-yellow-400 font-bold hover:text-green-500"
+          className="text-yellow-400 text-xl font-bold hover:text-green-500"
           type="submit"
           disabled={isSubmitting}
         >
           {isSubmitting ? "Saving..." : initialData ? "Update" : "Create"}
         </button>
         <button
-          className="text-yellow-400 font-bold hover:text-red-500"
+          className="text-yellow-400 text-xl font-bold hover:text-red-500 ml-4"
           type="button"
           onClick={onClose}
           disabled={isSubmitting}

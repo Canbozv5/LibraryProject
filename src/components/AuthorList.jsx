@@ -86,58 +86,59 @@ export default function AuthorList() {
           />
         </div>
       )}
+      <div className="overflow-x-auto w-full mt-4 border border-yellow-600 rounded-lg">
+        <table className="min-w-full border-collapse whitespace-nowrap">
+          {/* List head  */}
 
-      <table className="min-w-full border-collapse ">
-        {/* List head  */}
-
-        <thead>
-          <tr className="bg-gray-200 text-center">
-            <th className="border p-2 text-yellow-900">ID</th>
-            <th className="border p-2 text-yellow-900">Name</th>
-            <th className="border p-2 text-yellow-900">Birth Date</th>
-            <th className="border p-2 text-yellow-900">Country</th>
-            <th className="border p-2 text-yellow-900">Actions</th>
-          </tr>
-        </thead>
-
-        {/* List body  */}
-
-        <tbody>
-          {authors.map((p) => (
-            <tr key={p.id} className="text-center">
-              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
-                {p.id}
-              </td>
-              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
-                {p.name}
-              </td>
-              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
-                {p.birthDate}
-              </td>
-              <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
-                {p.country}
-              </td>
-
-              {/* EDIT or DELETE buttons */}
-
-              <td className="border p-2 space-x-2 bg-gradient-to-r from-black to-transparent">
-                <button
-                  onClick={() => handleEdit(p)}
-                  className="text-blue-600 font-semibold hover:underline"
-                >
-                  EDIT
-                </button>
-                <button
-                  onClick={() => handleDelete(p.id)}
-                  className="text-red-600 font-semibold hover:underline"
-                >
-                  DELETE
-                </button>
-              </td>
+          <thead>
+            <tr className="bg-gray-200 text-center">
+              <th className="border p-2 text-yellow-900">ID</th>
+              <th className="border p-2 text-yellow-900">Name</th>
+              <th className="border p-2 text-yellow-900">Birth Date</th>
+              <th className="border p-2 text-yellow-900">Country</th>
+              <th className="border p-2 text-yellow-900">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          {/* List body  */}
+
+          <tbody>
+            {authors.map((p) => (
+              <tr key={p.id} className="text-center">
+                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                  {p.id}
+                </td>
+                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                  {p.name}
+                </td>
+                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                  {p.birthDate}
+                </td>
+                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                  {p.country}
+                </td>
+
+                {/* EDIT or DELETE buttons */}
+
+                <td className="border p-2 space-x-2 bg-gradient-to-r from-black to-transparent">
+                  <button
+                    onClick={() => handleEdit(p)}
+                    className="text-blue-600 font-semibold hover:underline"
+                  >
+                    EDIT
+                  </button>
+                  <button
+                    onClick={() => handleDelete(p.id)}
+                    className="text-red-600 font-semibold hover:underline"
+                  >
+                    DELETE
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
