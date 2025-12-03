@@ -78,7 +78,7 @@ export default function CategoriesList() {
       </button>
 
       {showForm && (
-        <div className="mb-8 p-4 border rounded shadow-lg shadow-yellow-400 bg-gradient-to-r from-black to-transparent">
+        <div className="mb-8 p-4 border rounded shadow-lg shadow-yellow-400 bg-orange-100">
           <CategoriesForm
             initialData={selectedCategory}
             onSuccess={handleFormSuccess}
@@ -87,16 +87,16 @@ export default function CategoriesList() {
         </div>
       )}
 
-      <div className="overflow-x-auto w-full mt-4 border border-yellow-600 rounded-lg">
+      <div className="overflow-x-auto w-full mt-4 border border-yellow-600 rounded-lg shadow-lg shadow-yellow-400">
         <table className="min-w-full border-collapse whitespace-nowrap">
           {/* List head  */}
 
           <thead>
-            <tr className="bg-gray-200 text-center">
-              <th className="border p-2 text-yellow-900">ID</th>
-              <th className="border p-2 text-yellow-900">Category Name</th>
-              <th className="border p-2 text-yellow-900">Description</th>
-              <th className="border p-2 text-yellow-900">Actions</th>
+            <tr className="bg-white text-center">
+              <th className="border p-2 text-amber-900">ID</th>
+              <th className="border p-2 text-amber-900">Category Name</th>
+              <th className="border p-2 text-amber-900">Description</th>
+              <th className="border p-2 text-amber-900">Actions</th>
             </tr>
           </thead>
 
@@ -105,19 +105,19 @@ export default function CategoriesList() {
           <tbody>
             {categories.map((p) => (
               <tr key={p.id} className="text-center">
-                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                <td className="border p-2 font-medium text-amber-900 bg-orange-100">
                   {p.id}
                 </td>
-                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                <td className="border p-2 font-medium text-amber-900 bg-orange-100">
                   {p.name}
                 </td>
-                <td className="border p-2 text-yellow-400 bg-gradient-to-r from-black to-transparent">
+                <td className="border p-2 font-medium text-amber-900 bg-orange-100">
                   {p.description}
                 </td>
 
                 {/* EDIT or DELETE buttons */}
 
-                <td className="border p-2 space-x-2 bg-gradient-to-r from-black to-transparent">
+                <td className="border p-2 space-x-2 bg-orange-100">
                   <button
                     onClick={() => handleEdit(p)}
                     className="text-blue-600 font-semibold hover:underline"

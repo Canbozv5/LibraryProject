@@ -17,7 +17,7 @@ function Header() {
   return (
     <div>
       {/* Header */}
-      <header className="bg-amber-600 text-white p-4 w-full">
+      <header className="bg-emerald-900 border-b border-yellow-600 text-white p-4 w-full">
         {" "}
         {/* background color */}
         <div className="container mx-auto">
@@ -47,7 +47,7 @@ function Header() {
           {/* Nav Links */}
           <nav
             className={`absolute md:static top-16 left-0 w-full 
-              md:w-auto bg-gray-800 md:bg-transparent z-50 
+              md:w-auto bg-green-800 md:bg-transparent z-50 
               transition-all duration-300 ease-in-out
               ${isMenuOpen ? "block" : "hidden"} md:block`}
           >

@@ -9,3 +9,30 @@
   width: 100%;
   min-height: 100vh;
 }
+
+.panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.books_home {
+  width: 100%;
+  will-change: transform;
+  transform-origin: bottom left;
+  transform: rotate(-10deg);
+  transition: transform 300ms ease-out;
+}
+
+.books_home:hover {
+  position: relative;
+  transform: rotate(0);
+}
+
+.books_home::before {
+  display: block;
+  position: absolute;
+  transition: all 0.2 ease-out;
+  transform-origin: 30% 50%;
+}
