@@ -17,9 +17,8 @@ function Header() {
   return (
     <div>
       {/* Header */}
-      <header className="bg-emerald-900 border-b border-yellow-600 text-white p-4 w-full">
+      <header className="bg-emerald-900 dark:bg-emerald-950 border-b border-yellow-600 text-white p-4 w-full">
         {" "}
-        {/* background color */}
         <div className="container mx-auto">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}

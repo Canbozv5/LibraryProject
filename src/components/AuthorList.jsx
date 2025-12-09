@@ -72,13 +72,13 @@ export default function AuthorList() {
 
       <button
         onClick={handleNew}
-        className="mb-4 p-2 bg-yellow-600 text-white text-lg font-semibold rounded hover:bg-yellow-900 hover:shadow-md hover:shadow-yellow-500"
+        className="mb-4 p-2 bg-yellow-600 dark:bg-yellow-900 dark:hover:bg-yellow-600 text-white text-lg font-semibold rounded hover:bg-yellow-900 hover:shadow-md hover:shadow-yellow-500 dark:hover:shadow-yellow-700"
       >
         Add New Author
       </button>
 
       {showForm && (
-        <div className="mb-8 p-4 border rounded shadow-lg shadow-yellow-400 bg-orange-100">
+        <div className="mb-8 p-4 border rounded shadow-lg shadow-yellow-400 dark:shadow-yellow-700 bg-orange-100 dark:bg-stone-500">
           <AuthorForm
             initialData={selectedAuthor}
             onSuccess={handleFormSuccess}
@@ -86,17 +86,27 @@ export default function AuthorList() {
           />
         </div>
       )}
-      <div className="overflow-x-auto w-full mt-4 border border-yellow-600 rounded-lg shadow-lg shadow-yellow-400">
+      <div className="overflow-x-auto w-full mt-4 border border-yellow-600 rounded-lg shadow-lg shadow-yellow-400 dark:shadow-yellow-700">
         <table className="min-w-full  border-collapse whitespace-nowrap">
           {/* List head  */}
 
           <thead>
-            <tr className="bg-white text-center">
-              <th className="border p-2 text-amber-900">ID</th>
-              <th className="border p-2 text-amber-900">Name</th>
-              <th className="border p-2 text-amber-900">Birth Date</th>
-              <th className="border p-2 text-amber-900">Country</th>
-              <th className="border p-2 text-amber-900">Actions</th>
+            <tr className="bg-white dark:bg-gray-400 text-center">
+              <th className="border p-2 text-amber-900 dark:text-amber-300">
+                ID
+              </th>
+              <th className="border p-2 text-amber-900 dark:text-amber-300">
+                Name
+              </th>
+              <th className="border p-2 text-amber-900 dark:text-amber-300">
+                Birth Date
+              </th>
+              <th className="border p-2 text-amber-900 dark:text-amber-300">
+                Country
+              </th>
+              <th className="border p-2 text-amber-900 dark:text-amber-300">
+                Actions
+              </th>
             </tr>
           </thead>
 
@@ -105,31 +115,31 @@ export default function AuthorList() {
           <tbody>
             {authors.map((p) => (
               <tr key={p.id} className="text-center">
-                <td className="border p-2 font-medium text-amber-900 bg-orange-100">
+                <td className="border p-2 font-medium text-amber-900 dark:text-amber-300 bg-orange-100 dark:bg-stone-500">
                   {p.id}
                 </td>
-                <td className="border p-2 font-medium text-amber-900 bg-orange-100">
+                <td className="border p-2 font-medium text-amber-900 dark:text-amber-300 bg-orange-100 dark:bg-stone-500">
                   {p.name}
                 </td>
-                <td className="border p-2 font-medium text-amber-900 bg-orange-100">
+                <td className="border p-2 font-medium text-amber-900 dark:text-amber-300 bg-orange-100 dark:bg-stone-500">
                   {p.birthDate}
                 </td>
-                <td className="border p-2 font-medium text-amber-900 bg-orange-100">
+                <td className="border p-2 font-medium text-amber-900 dark:text-amber-300 bg-orange-100 dark:bg-stone-500">
                   {p.country}
                 </td>
 
                 {/* EDIT or DELETE buttons */}
 
-                <td className="border p-2 space-x-2 bg-orange-100">
+                <td className="border p-2 space-x-2 bg-orange-100 dark:bg-stone-500">
                   <button
                     onClick={() => handleEdit(p)}
-                    className="text-blue-600 font-semibold hover:underline"
+                    className="text-blue-600 dark:text-blue-400 dark:hover:text-blue-700 font-semibold hover:underline"
                   >
                     EDIT
                   </button>
                   <button
                     onClick={() => handleDelete(p.id)}
-                    className="text-red-600 font-semibold hover:underline"
+                    className="text-red-600 dark:text-red-900 dark:hover:text-red-500 font-semibold hover:underline"
                   >
                     DELETE
                   </button>

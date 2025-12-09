@@ -53,19 +53,19 @@ function HomePage() {
       </div>
       <section className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-8 items-center justify-items-center italic">
         {/* Author images  - 4 columns grid */}
-        <div className="panel flex flex-col mt-4 w-4xl border-2 border-yellow-500 rounded-lg p-3 bg-emerald-800 md:text-center">
+        <div className="panel flex flex-col mt-4 w-4xl border-2 border-yellow-500 rounded-lg p-3 bg-emerald-800 dark:bg-emerald-950 md:text-center">
           {/* Albert Camus  */}
           <div className="flex flex-row items-center">
             <div className="max-h-70">
               <img
-                className="books_home hover:shadow-yellow-800 skew-y-12 w-[75px] h-[100px] md:w-[90px] md:h-[140px] md:pl-1"
+                className="books_home skew-y-12 w-[75px] h-[100px] md:w-[90px] md:h-[140px] md:pl-1"
                 src={albertcamus1}
                 alt="Albert Camus"
               />
             </div>
             <div className="flex flex-col">
               <div className="flex justify-center">
-                <span class="inline-flex text-white items-center bg-amber-600 text-xs font-medium px-1.5 py-0.5 rounded-lg">
+                <span class="inline-flex text-white items-center bg-amber-600 dark:bg-amber-900 text-xs font-medium px-1.5 py-0.5 rounded-lg">
                   <svg
                     class="w-3 h-3 me-1"
                     aria-hidden="true"
@@ -86,7 +86,7 @@ function HomePage() {
                   Trending
                 </span>
               </div>
-              <div className="text-yellow-500 text-center">
+              <div className="text-yellow-500 dark:text-yellow-700 text-center">
                 <h3>La Chute</h3>
                 <span className="text-xs lg:text-base text-gray-400 ">
                   Albert Camus
@@ -101,25 +101,25 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <div className="w-full bg-amber-600 hover:bg-amber-800 text-white font-bold py-1 rounded-lg shadow-md transition-colors text-center text-xs md:text-base">
+          <div className="w-full bg-amber-600 dark:bg-amber-900 dark:hover:bg-amber-600 hover:bg-amber-800 text-white font-bold py-1 rounded-lg shadow-md transition-colors text-center text-xs md:text-base">
             <button>
               <a href="/borrow">BORROW</a>
             </button>
           </div>
         </div>
-        <div className="panel flex flex-col mt-4 w-4xl border-2 border-yellow-500 rounded-lg p-3 bg-emerald-800 md:text-center">
+        <div className="panel flex flex-col mt-4 w-4xl border-2 border-yellow-500 rounded-lg p-3 bg-emerald-800 dark:bg-emerald-950 md:text-center">
           {/* Albert Camus  */}
           <div className="flex flex-row items-center">
             <div className="max-h-70">
               <img
-                className="books_home hover:shadow-yellow-800 skew-y-12 w-[75px] h-[100px] md:w-[90px] md:h-[140px] md:pl-1"
+                className="books_home skew-y-12 w-[75px] h-[100px] md:w-[90px] md:h-[140px] md:pl-1"
                 src={albertcamus2}
                 alt="Albert Camus"
               />
             </div>
             <div className="flex flex-col">
               <div className="flex justify-center">
-                <span class="inline-flex text-white items-center bg-amber-600 text-xs font-medium px-1.5 py-0.5 rounded-lg">
+                <span class="inline-flex text-white items-center bg-amber-600 dark:bg-amber-900 text-xs font-medium px-1.5 py-0.5 rounded-lg">
                   <svg
                     class="w-3 h-3 me-1"
                     aria-hidden="true"
@@ -140,7 +140,7 @@ function HomePage() {
                   Trending
                 </span>
               </div>
-              <div className="text-yellow-500 text-center">
+              <div className="text-yellow-500 dark:text-yellow-700 text-center">
                 <h3>The Stranger</h3>
                 <span className="text-xs lg:text-base text-gray-400 ">
                   Albert Camus
@@ -155,25 +155,25 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <div className="w-full bg-amber-600 hover:bg-amber-800 text-white font-bold py-1 rounded-lg shadow-md transition-colors text-center text-xs md:text-base">
+          <div className="w-full bg-amber-600 dark:bg-amber-900 dark:hover:bg-amber-600 hover:bg-amber-800 text-white font-bold py-1 rounded-lg shadow-md transition-colors text-center text-xs md:text-base">
             <button>
               <a href="/borrow">BORROW</a>
             </button>
           </div>
         </div>
-        <div className="panel flex flex-col mt-4 w-4xl border-2 border-yellow-500 rounded-lg p-3 bg-emerald-800 md:text-center">
+        <div className="panel flex flex-col mt-4 w-4xl border-2 border-yellow-500 rounded-lg p-3 bg-emerald-800 dark:bg-emerald-950 md:text-center">
           {/* James Joyce */}
           <div className="flex flex-row items-center">
             <div className="max-h-70">
               <img
-                className="books_home hover:shadow-yellow-800 skew-y-12 w-[75px] h-[100px] md:w-[90px] md:h-[140px] md:pl-1"
+                className="books_home skew-y-12 w-[75px] h-[100px] md:w-[90px] md:h-[140px] md:pl-1"
                 src={jamesjoyce1}
                 alt="James Joyce"
               />
             </div>
             <div className="flex flex-col">
               <div className="flex justify-center">
-                <span class="inline-flex text-white items-center bg-amber-600 text-xs font-medium px-1.5 py-0.5 rounded-lg">
+                <span class="inline-flex text-white items-center bg-amber-600 dark:bg-amber-900 text-xs font-medium px-1.5 py-0.5 rounded-lg">
                   <svg
                     class="w-3 h-3 me-1"
                     aria-hidden="true"
@@ -194,7 +194,7 @@ function HomePage() {
                   Trending
                 </span>
               </div>
-              <div className="text-yellow-500 text-center">
+              <div className="text-yellow-500 dark:text-yellow-700 text-center">
                 <h3>Finnegans Wake</h3>
                 <span className="text-xs lg:text-base text-gray-400 ">
                   James Joyce
@@ -209,25 +209,25 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <div className="w-full bg-amber-600 hover:bg-amber-800 text-white font-bold py-1 rounded-lg shadow-md transition-colors text-center text-xs md:text-base">
+          <div className="w-full bg-amber-600 dark:bg-amber-900 dark:hover:bg-amber-600 hover:bg-amber-800 text-white font-bold py-1 rounded-lg shadow-md transition-colors text-center text-xs md:text-base">
             <button>
               <a href="/borrow">BORROW</a>
             </button>
           </div>
         </div>
-        <div className="panel flex flex-col mt-4 w-4xl border-2 border-yellow-500 rounded-lg p-3 bg-emerald-800 md:text-center">
+        <div className="panel flex flex-col mt-4 w-4xl border-2 border-yellow-500 rounded-lg p-3 bg-emerald-800 dark:bg-emerald-950 md:text-center">
           {/* James Joyce */}
           <div className="flex flex-row items-center">
             <div className="max-h-70">
               <img
-                className="books_home hover:shadow-yellow-800 skew-y-12 w-[75px] h-[100px] md:w-[90px] md:h-[140px] md:pl-1"
+                className="books_home skew-y-12 w-[75px] h-[100px] md:w-[90px] md:h-[140px] md:pl-1"
                 src={jamesjoyce2}
                 alt="James Joyce"
               />
             </div>
             <div className="flex flex-col">
               <div className="flex justify-center">
-                <span class="inline-flex text-white items-center bg-amber-600 text-xs font-medium px-1.5 py-0.5 rounded-lg">
+                <span class="inline-flex text-white items-center bg-amber-600 dark:bg-amber-900 text-xs font-medium px-1.5 py-0.5 rounded-lg">
                   <svg
                     class="w-3 h-3 me-1"
                     aria-hidden="true"
@@ -248,7 +248,7 @@ function HomePage() {
                   Trending
                 </span>
               </div>
-              <div className="text-yellow-500 text-center">
+              <div className="text-yellow-500 dark:text-yellow-700 text-center">
                 <h3>Portrait of Dubliner</h3>
                 <span className="text-xs lg:text-base text-gray-400 ">
                   James Joyce
@@ -263,25 +263,25 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <div className="w-full bg-amber-600 hover:bg-amber-800 text-white font-bold py-1 rounded-lg shadow-md transition-colors text-center text-xs md:text-base">
+          <div className="w-full bg-amber-600 dark:bg-amber-900 dark:hover:bg-amber-600 hover:bg-amber-800 text-white font-bold py-1 rounded-lg shadow-md transition-colors text-center text-xs md:text-base">
             <button>
               <a href="/borrow">BORROW</a>
             </button>
           </div>
         </div>
-        <div className="panel flex flex-col mt-4 w-4xl border-2 border-yellow-500 rounded-lg p-3 bg-emerald-800 md:text-center">
+        <div className="panel flex flex-col mt-4 w-4xl border-2 border-yellow-500 rounded-lg p-3 bg-emerald-800 dark:bg-emerald-950 md:text-center">
           {/* Franz Kafka */}
           <div className="flex flex-row items-center">
             <div className="max-h-70">
               <img
-                className="books_home hover:shadow-yellow-800 skew-y-12 w-[75px] h-[100px] md:w-[90px] md:h-[140px] md:pl-1"
+                className="books_home skew-y-12 w-[75px] h-[100px] md:w-[90px] md:h-[140px] md:pl-1"
                 src={franzkafka1}
                 alt="Franz Kafka"
               />
             </div>
             <div className="flex flex-col">
               <div className="flex justify-center">
-                <span class="inline-flex text-white items-center bg-amber-600 text-xs font-medium px-1.5 py-0.5 rounded-lg">
+                <span class="inline-flex text-white items-center bg-amber-600 dark:bg-amber-900 text-xs font-medium px-1.5 py-0.5 rounded-lg">
                   <svg
                     class="w-3 h-3 me-1"
                     aria-hidden="true"
@@ -302,7 +302,7 @@ function HomePage() {
                   Trending
                 </span>
               </div>
-              <div className="text-yellow-500 text-center">
+              <div className="text-yellow-500 dark:text-yellow-700 text-center">
                 <h3>The Metamorphosis</h3>
                 <span className="text-xs lg:text-base text-gray-400 ">
                   Franz Kafka
@@ -317,25 +317,25 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <div className="w-full bg-amber-600 hover:bg-amber-800 text-white font-bold py-1 rounded-lg shadow-md transition-colors text-center text-xs md:text-base">
+          <div className="w-full bg-amber-600 dark:bg-amber-900 dark:hover:bg-amber-600 hover:bg-amber-800 text-white font-bold py-1 rounded-lg shadow-md transition-colors text-center text-xs md:text-base">
             <button>
               <a href="/borrow">BORROW</a>
             </button>
           </div>
         </div>
-        <div className="panel flex flex-col mt-4 w-4xl border-2 border-yellow-500 rounded-lg p-3 bg-emerald-800 md:text-center">
+        <div className="panel flex flex-col mt-4 w-4xl border-2 border-yellow-500 rounded-lg p-3 bg-emerald-800 dark:bg-emerald-950 md:text-center">
           {/* Franz Kafka */}
           <div className="flex flex-row items-center">
             <div className="max-h-70">
               <img
-                className="books_home hover:shadow-yellow-800 skew-y-12 w-[75px] h-[100px] md:w-[90px] md:h-[140px] md:pl-1"
+                className="books_home skew-y-12 w-[75px] h-[100px] md:w-[90px] md:h-[140px] md:pl-1"
                 src={franzkafka2}
                 alt="Franz Kafka"
               />
             </div>
             <div className="flex flex-col">
               <div className="flex justify-center">
-                <span class="inline-flex text-white items-center bg-amber-600 text-xs font-medium px-1.5 py-0.5 rounded-lg">
+                <span class="inline-flex text-white items-center bg-amber-600 dark:bg-amber-900 text-xs font-medium px-1.5 py-0.5 rounded-lg">
                   <svg
                     class="w-3 h-3 me-1"
                     aria-hidden="true"
@@ -356,7 +356,7 @@ function HomePage() {
                   Trending
                 </span>
               </div>
-              <div className="text-yellow-500 text-center">
+              <div className="text-yellow-500 dark:text-yellow-700 text-center">
                 <h3>The Metamorphosis</h3>
                 <span className="text-xs lg:text-base text-gray-400 ">
                   Franz Kafka
@@ -371,25 +371,25 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <div className="w-full bg-amber-600 hover:bg-amber-800 text-white font-bold py-1 rounded-lg shadow-md transition-colors text-center text-xs md:text-base">
+          <div className="w-full bg-amber-600 dark:bg-amber-900 dark:hover:bg-amber-600 hover:bg-amber-800 text-white font-bold py-1 rounded-lg shadow-md transition-colors text-center text-xs md:text-base">
             <button>
               <a href="/borrow">BORROW</a>
             </button>
           </div>
         </div>
-        <div className="panel flex flex-col mt-4 w-4xl border-2 border-yellow-500 rounded-lg p-3 bg-emerald-800 md:text-center">
+        <div className="panel flex flex-col mt-4 w-4xl border-2 border-yellow-500 rounded-lg p-3 bg-emerald-800 dark:bg-emerald-950 md:text-center">
           {/* Orhan Pamuk */}
           <div className="flex flex-row items-center">
             <div className="max-h-70">
               <img
-                className="books_home hover:shadow-yellow-800 skew-y-12 w-[75px] h-[100px] md:w-[90px] md:h-[140px] md:pl-1"
+                className="books_home skew-y-12 w-[75px] h-[100px] md:w-[90px] md:h-[140px] md:pl-1"
                 src={orhanpamuk2}
                 alt="Orhan Pamuk"
               />
             </div>
             <div className="flex flex-col">
               <div className="flex justify-center">
-                <span class="inline-flex text-white items-center bg-amber-600 text-xs font-medium px-1.5 py-0.5 rounded-lg">
+                <span class="inline-flex text-white items-center bg-amber-600 dark:bg-amber-900 text-xs font-medium px-1.5 py-0.5 rounded-lg">
                   <svg
                     class="w-3 h-3 me-1"
                     aria-hidden="true"
@@ -410,7 +410,7 @@ function HomePage() {
                   Trending
                 </span>
               </div>
-              <div className="text-yellow-500 text-center">
+              <div className="text-yellow-500 dark:text-yellow-700 text-center">
                 <h3>The Black Book</h3>
                 <span className="text-xs lg:text-base text-gray-400 ">
                   Orhan Pamuk
@@ -425,25 +425,25 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <div className="w-full bg-amber-600 hover:bg-amber-800 text-white font-bold py-1 rounded-lg shadow-md transition-colors text-center text-xs md:text-base">
+          <div className="w-full bg-amber-600 dark:bg-amber-900 dark:hover:bg-amber-600 hover:bg-amber-800 text-white font-bold py-1 rounded-lg shadow-md transition-colors text-center text-xs md:text-base">
             <button>
               <a href="/borrow">BORROW</a>
             </button>
           </div>
         </div>
-        <div className="panel flex flex-col mt-4 w-4xl border-2 border-yellow-500 rounded-lg p-3 bg-emerald-800 md:text-center">
+        <div className="panel flex flex-col mt-4 w-4xl border-2 border-yellow-500 rounded-lg p-3 bg-emerald-800 dark:bg-emerald-950 md:text-center">
           {/* Lev Tolstoy */}
           <div className="flex flex-row items-center">
             <div className="max-h-70">
               <img
-                className="books_home hover:shadow-yellow-800 skew-y-12 w-[75px] h-[100px] md:w-[90px] md:h-[140px] md:pl-1"
+                className="books_home skew-y-12 w-[75px] h-[100px] md:w-[90px] md:h-[140px] md:pl-1"
                 src={levtolstoy1}
                 alt="Lev Tolstoy"
               />
             </div>
             <div className="flex flex-col">
               <div className="flex justify-center">
-                <span class="inline-flex text-white bg-amber-600 text-xs font-medium px-1.5 py-0.5 rounded-lg">
+                <span class="inline-flex text-white items-center bg-amber-600 dark:bg-amber-900 text-xs font-medium px-1.5 py-0.5 rounded-lg">
                   <svg
                     class="w-3 h-3 me-1"
                     aria-hidden="true"
@@ -464,7 +464,7 @@ function HomePage() {
                   Trending
                 </span>
               </div>
-              <div className="text-yellow-500 text-center">
+              <div className="text-yellow-500 dark:text-yellow-700 text-center">
                 <h3>Anna Karenina</h3>
                 <span className="text-xs lg:text-base text-gray-400 ">
                   Lev Tolstoy
@@ -479,7 +479,7 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <div className="w-full bg-amber-600 hover:bg-amber-800 text-white font-bold py-1 rounded-lg shadow-md transition-colors text-center text-xs md:text-base">
+          <div className="w-full bg-amber-600 dark:bg-amber-900 dark:hover:bg-amber-600 hover:bg-amber-800 text-white font-bold py-1 rounded-lg shadow-md transition-colors text-center text-xs md:text-base">
             <button>
               <a href="/borrow">BORROW</a>
             </button>
