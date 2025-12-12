@@ -113,14 +113,14 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
   // Layout for form
   return (
     <div>
-      <h3 className="text-amber-900 text-lg font-semibold">
+      <h3 className="text-amber-900 dark:text-amber-300 text-lg font-semibold">
         {initialData ? "Edit Book" : "Add New Book"}
       </h3>
 
       <form onSubmit={handleSubmit}>
         {/* Book Name */}
         <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
-          <label className="text-amber-900 text-xl mb-1 w-full">
+          <label className="text-amber-900 dark:text-amber-300 text-xl mb-1 w-full">
             Book Name :
             <input
               className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
@@ -132,7 +132,7 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
             {errors.name && <p className="error">{errors.name}</p>}
           </label>
 
-          <label className="text-amber-900 text-xl mb-1 w-full">
+          <label className="text-amber-900 dark:text-amber-300 text-xl mb-1 w-full">
             Publication Year :
             <input
               className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
@@ -143,7 +143,7 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
             />
           </label>
 
-          <label className="text-amber-900 text-xl mb-1 w-full">
+          <label className="text-amber-900 dark:text-amber-300 text-xl mb-1 w-full">
             Stock :
             <input
               className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
@@ -155,7 +155,9 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
           </label>
         </div>
         <div className="mb-1">
-          <label className="block text-amber-900 text-xl mb-1">Author :</label>
+          <label className="block text-amber-900 dark:text-amber-300 text-xl mb-1">
+            Author :
+          </label>
           <select
             name="authorId"
             value={data.authorId}
@@ -172,7 +174,7 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
         </div>
 
         <div className="mb-1">
-          <label className="block text-amber-900 text-xl mb-1">
+          <label className="block text-amber-900 dark:text-amber-300 text-xl mb-1">
             Publisher :
           </label>
           <select
@@ -194,7 +196,7 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
         </div>
 
         <div className="mb-1">
-          <label className="block text-amber-900 text-xl mb-1">
+          <label className="block text-amber-900 dark:text-amber-300 text-xl mb-1">
             Category :
           </label>
           <select
@@ -215,7 +217,7 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
         {/* Save or Cancel buttons */}
 
         <button
-          className="text-amber-900 text-xl mt-2 font-bold hover:text-green-500 hover:border-green-500 border-2 rounded-lg border-amber-900 p-1"
+          className="text-amber-900 dark:text-amber-300 text-xl font-bold hover:text-green-500 dark:hover:text-green-500 hover:border-green-500 border-2 rounded-lg border-amber-900 p-1"
           type="submit"
           disabled={isSubmitting}
         >
@@ -223,7 +225,7 @@ export default function BookForm({ initialData, onSuccess, onClose }) {
         </button>
 
         <button
-          className="text-amber-900 text-xl font-bold hover:text-red-500 ml-4 hover:border-red-500 border-2 rounded-lg border-amber-900 p-1"
+          className="text-amber-900 dark:text-amber-300 text-xl font-bold hover:text-red-500 dark:hover:text-red-400 ml-4 hover:border-red-500 border-2 rounded-lg border-amber-900 p-1"
           type="button"
           onClick={onClose}
           disabled={isSubmitting}

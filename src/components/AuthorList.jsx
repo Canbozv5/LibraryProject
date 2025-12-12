@@ -87,7 +87,7 @@ export default function AuthorList() {
         </div>
       )}
       <div className="overflow-x-auto w-full mt-4 border border-yellow-600 rounded-lg shadow-lg shadow-yellow-400 dark:shadow-yellow-700">
-        <table className="min-w-full  border-collapse whitespace-nowrap">
+        <table className="min-w-full border-collapse whitespace-nowrap">
           {/* List head  */}
 
           <thead>

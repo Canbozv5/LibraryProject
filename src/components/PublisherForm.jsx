@@ -68,14 +68,14 @@ export default function PublisherForm({ initialData, onSuccess, onClose }) {
   // Layout for form
   return (
     <div>
-      <h3 className="text-amber-900 text-lg font-semibold">
+      <h3 className="text-amber-900 dark:text-amber-300 text-lg font-semibold">
         {initialData ? "Edit Publisher" : "Add New Publisher"}
       </h3>
 
       <form onSubmit={handleSubmit}>
         {/* Category Name */}
         <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
-          <label className="text-amber-900 text-xl mb-1 w-full">
+          <label className="text-amber-900 dark:text-amber-300 text-xl mb-1 w-full">
             Name:
             <input
               className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
@@ -87,7 +87,7 @@ export default function PublisherForm({ initialData, onSuccess, onClose }) {
             {errors.name && <p className="error">{errors.name}</p>}
           </label>
 
-          <label className="text-amber-900 text-xl mb-1 w-full">
+          <label className="text-amber-900 dark:text-amber-300 text-xl mb-1 w-full">
             Address:
             <input
               className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
@@ -98,7 +98,7 @@ export default function PublisherForm({ initialData, onSuccess, onClose }) {
             />
           </label>
 
-          <label className="text-amber-900 text-xl mb-1 w-full">
+          <label className="text-amber-900 dark:text-amber-300 text-xl mb-1 w-full">
             Establishment Year:
             <input
               className="w-full ml-0 md:ml-2 border rounded-md text-black p-1"
@@ -113,7 +113,7 @@ export default function PublisherForm({ initialData, onSuccess, onClose }) {
         {/* Save or Cancel buttons */}
 
         <button
-          className="text-amber-900 text-xl font-bold hover:text-green-500 hover:border-green-500 border-2 rounded-lg border-amber-900 p-1"
+          className="text-amber-900 dark:text-amber-300 text-xl font-bold hover:text-green-500 dark:hover:text-green-500 hover:border-green-500 border-2 rounded-lg border-amber-900 p-1"
           type="submit"
           disabled={isSubmitting}
         >
@@ -121,7 +121,7 @@ export default function PublisherForm({ initialData, onSuccess, onClose }) {
         </button>
 
         <button
-          className="text-amber-900 text-xl font-bold hover:text-red-500 ml-4 hover:border-red-500 border-2 rounded-lg border-amber-900 p-1"
+          className="text-amber-900 dark:text-amber-300 text-xl font-bold hover:text-red-500 dark:hover:text-red-400 ml-4 hover:border-red-500 border-2 rounded-lg border-amber-900 p-1"
           type="button"
           onClick={onClose}
           disabled={isSubmitting}

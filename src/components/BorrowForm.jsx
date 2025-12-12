@@ -115,14 +115,14 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
   // Layout for form
   return (
     <div>
-      <h3 className="text-amber-900 text-lg font-semibold">
+      <h3 className="text-amber-900 dark:text-amber-300 text-lg font-semibold">
         {initialData ? "Edit Borrowing" : "Add New Borrowing"}
       </h3>
 
       <form onSubmit={handleSubmit}>
         {/* Borrower Name */}
         <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
-          <label className="text-amber-900 text-xl mb-1 w-full">
+          <label className="text-amber-900 dark:text-amber-300 text-xl mb-1 w-full">
             Borrower Name:
             <input
               className="w-full ml-0 md:ml-1 border rounded-md text-black p-1"
@@ -138,7 +138,7 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
 
           {/* Borrower Mail */}
 
-          <label className="text-amber-900 text-xl mb-1 w-full">
+          <label className="text-amber-900 dark:text-amber-300 text-xl mb-1 w-full">
             Borrower Mail:
             <input
               className="w-full ml-0 md:ml-1 border rounded-md text-black p-1"
@@ -154,7 +154,7 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
 
           {/* Borrowing Date */}
 
-          <label className="text-amber-900 text-xl mb-1 w-full">
+          <label className="text-amber-900 dark:text-amber-300 text-xl mb-1 w-full">
             Borrowing Date:
             <input
               className="w-full ml-0 md:ml-1 border rounded-md text-black p-1"
@@ -172,7 +172,7 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
 
           {/* Return Date */}
 
-          <label className="text-amber-900 text-xl mb-1 w-full">
+          <label className="text-amber-900 dark:text-amber-300 text-xl mb-1 w-full">
             Return Date:
             <input
               className="w-full ml-0 md:ml-1 border rounded-md text-black p-1"
@@ -187,7 +187,9 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
         {/* book select option */}
 
         <div className="mb-4">
-          <label className="block text-amber-900 text-xl mb-1">Book:</label>
+          <label className="block text-amber-900 dark:text-amber-300 text-xl mb-1">
+            Book:
+          </label>
           <select
             name="bookId"
             value={data.bookId}
@@ -208,7 +210,7 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="text-amber-900 text-xl font-bold hover:text-green-500 hover:border-green-500 border-2 rounded-lg border-amber-900 p-1"
+          className="text-amber-900 dark:text-amber-300 text-xl font-bold hover:text-green-500 dark:hover:text-green-500 hover:border-green-500 border-2 rounded-lg border-amber-900 p-1"
         >
           {isSubmitting ? "Saving..." : initialData ? "Update" : "Create"}
         </button>
@@ -217,7 +219,7 @@ export default function BorrowForm({ initialData, onSuccess, onClose }) {
           type="button"
           onClick={onClose}
           disabled={isSubmitting}
-          className="text-amber-900 text-xl font-bold hover:text-red-500 ml-4 hover:border-red-500 border-2 rounded-lg border-amber-900 p-1"
+          className="text-amber-900 dark:text-amber-300 text-xl font-bold hover:text-red-500 dark:hover:text-red-400 ml-4 hover:border-red-500 border-2 rounded-lg border-amber-900 p-1"
         >
           Cancel
         </button>
