@@ -46,7 +46,7 @@ function Header() {
           {/* Nav Links */}
           <nav
             className={`absolute md:static top-16 left-0 w-full 
-              md:w-auto bg-emerald-800 dark:bg-emerald-950 md:bg-transparent z-50 
+              md:w-auto bg-emerald-900 dark:bg-emerald-950 md:bg-transparent z-50 
               transition-all duration-300 ease-in-out
               ${isMenuOpen ? "block" : "hidden"} md:block`}
           >
